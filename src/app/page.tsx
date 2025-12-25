@@ -4,6 +4,7 @@ import { Hero } from "@/components/landing/Hero";
 import { AboutSection } from "@/components/landing/AboutSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { Suspense } from "react";
+import { MacbookScrollDemo } from "@/components/landing/MacbookScroll";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <AboutSection />
+        <MacbookScrollDemo />
         <FeaturesSection />
       </main>
       <Footer />
