@@ -29,7 +29,7 @@ export function Hero() {
           }
         }
       },
-      isDeleting ? 50 : 100,
+      isDeleting ? 30 : 60,
     )
     return () => clearTimeout(timeout)
   }, [displayText, isDeleting, currentRole])
@@ -47,10 +47,7 @@ export function Hero() {
               <h1 className="text-4xl font-bold tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl text-balance">
                 Forging digital
                 <br />
-                <span
-                  className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text"
-                  style={{'--dynamic-text-color': 'hsl(var(--accent))'} as React.CSSProperties}
-                >
+                <span className="text-foreground">
                   {displayText}
                 </span>
               </h1>
