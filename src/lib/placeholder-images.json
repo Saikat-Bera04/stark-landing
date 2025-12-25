@@ -23,6 +23,54 @@
       "description": "Profile picture for a participant",
       "imageUrl": "https://images.unsplash.com/photo-1531123414780-f74242c2b052?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzY2NjMyMzk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person portrait"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Gallery image 1",
+      "imageUrl": "https://images.unsplash.com/photo-1610571098334-9110b5ae0fd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMG5hdHVyZXxlbnwwfHx8fDE3NjY2NDA3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract nature"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Gallery image 2",
+      "imageUrl": "https://images.unsplash.com/photo-1462899006636-339e08d1844e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGNpdHl8ZW58MHx8fHwxNzY2NTc3MjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract city"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Gallery image 3",
+      "imageUrl": "https://images.unsplash.com/photo-1669295384050-a1d4357bd1d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMHRlY2h8ZW58MHx8fHwxNzY2NjQwNzQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract tech"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Gallery image 4",
+      "imageUrl": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGFydHxlbnwwfHx8fDE3NjY2MTQzODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract art"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Gallery image 5",
+      "imageUrl": "https://images.unsplash.com/photo-1561652723-f2f20a685b95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMHdhdGVyfGVufDB8fHx8MTc2NjY0MDc0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract water"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Gallery image 6",
+      "imageUrl": "https://images.unsplash.com/photo-1486551937199-baf066858de7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhYnN0cmFjdCUyMHRleHR1cmV8ZW58MHx8fHwxNzY2NjIxMjg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract texture"
+    },
+    {
+      "id": "gallery-7",
+      "description": "Gallery image 7",
+      "imageUrl": "https://images.unsplash.com/photo-1604076947037-d909e2f10fca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGxpZ2h0fGVufDB8fHx8MTc2NjY0MDc0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract light"
+    },
+    {
+      "id": "gallery-8",
+      "description": "Gallery image 8",
+      "imageUrl": "https://images.unsplash.com/photo-1557264322-b44d383a2906?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMHNwYWNlfGVufDB8fHx8MTc2NjUzOTc3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract space"
     }
   ]
 }
