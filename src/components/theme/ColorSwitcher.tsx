@@ -15,7 +15,7 @@ const colors = [
   { name: 'Red', value: 'hsl(0 100% 50%)' },
   { name: 'Orange', value: 'hsl(39 100% 50%)' },
   { name: 'Sky Blue', value: 'hsl(197 71% 73%)' },
-  { name: 'Cyan', value: 'hsl(180 100% 50%)' },
+  { name: 'Cyan', 'value': 'hsl(180 100% 50%)' },
   { name: 'Pink', value: 'hsl(330 100% 71%)' },
   { name: 'Green', value: 'hsl(120 100% 50%)' },
 ];
@@ -44,7 +44,7 @@ export function ColorSwitcher() {
                         <button
                             onClick={() => setDynamicTextColor(color.value)}
                             className="h-6 w-6 rounded-full border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all"
-                            style={{ backgroundColor: color.value.startsWith('hsl') ? color.value.replace(/hsl\(([^)]+)\)/, 'hsla($1, 0.8)') : color.value }}
+                            style={{ backgroundColor: color.value }}
                             aria-label={`Change text color to ${color.name}`}
                         />
                     </TooltipTrigger>
