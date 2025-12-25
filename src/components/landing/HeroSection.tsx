@@ -41,7 +41,7 @@ export function HeroSection() {
           {/* Left column - Text */}
           <div className="space-y-8 sm:space-y-10">
             <div className="space-y-3 animate-fade-in-up">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">
+              <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary" style={{'--dynamic-text-color': 'hsl(var(--primary))'} as React.CSSProperties}>
                 EvoAvatar — Your Digital Self
               </p>
               <h1 className="text-4xl font-bold tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl text-balance">
@@ -65,6 +65,7 @@ export function HeroSection() {
               <Link
                 href="/signup"
                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg border border-primary bg-primary/10 px-7 py-4 sm:py-3.5 font-mono text-sm text-primary transition-all duration-500 hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
+                style={{'--dynamic-text-color': 'hsl(var(--primary))'} as React.CSSProperties}
               >
                 <span className="relative z-10">Create Your Avatar</span>
                 <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -91,36 +92,41 @@ export function HeroSection() {
                 <div className="h-3 w-3 rounded-full bg-primary/60 transition-colors hover:bg-primary" />
               </div>
               <div className="absolute top-3.5 left-1/2 -translate-x-1/2 bg-background/50 rounded-md px-3 py-1 font-mono text-xs text-muted-foreground">
-                terminal://evoavatar
+                terminal://eincode
               </div>
 
               <pre className="mt-6 overflow-hidden font-mono text-[10px] leading-relaxed text-primary/80 sm:text-xs md:text-sm">
-                <span className="block sm:hidden">{`┌───────────────────────┐
-│  ██████╗███████╗      │
-│ ██╔════╝██╔════╝      │
-│ ██║     █████╗        │
-│ ██║     ██╔══╝        │
-│ ╚██████╗██║           │
-│  ╚═════╝╚═╝           │
-│                       │
-│  > memories: 4        │
-│  > status: learning   │
-└───────────────────────┘`}</span>
-                <span className="hidden sm:block">{`┌─────────────────────────────────────┐
-│                                     │
-│  ██████╗ ██████╗ ██████╗ ███████╗   │
-│ ██╔════╝██╔═══██╗██╔══██╗██╔════╝   │
-│ ██║     ██║   ██║██║  ██║█████╗     │
-│ ██║     ██║   ██║██║  ██║██╔══╝     │
-│ ╚██████╗╚██████╔╝██████╔╝███████╗   │
-│  ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝   │
-│           Evo                       │
-│                                     │
-│   > memories created: 4             │
-│   > status: learning                │
-│   > last update: today              │
-│                                     │
-└─────────────────────────────────────┘`}</span>
+                <span className="block sm:hidden">{`
+┌──────────────────────────┐
+│  ██████╗  ██████╗ ██████╗ │
+│ ██╔════╝ ██╔═══██╗██╔══██╗│
+│ ██║     ██║   ██║██║  ██║│
+│ ╚██████╗╚██████╔╝██████╔╝│
+│  ╚═════╝ ╚═════╝ ╚═════╝ │
+│                          │
+│           Ein            │
+│ > experiments: 12        │
+│ > status: forging        │
+└──────────────────────────┘
+`}</span>
+                <span className="hidden sm:block">{`
+┌────────────────────────────────────────────────────────┐
+│                                                        │
+│   ██████╗    ██████╗  ██████╗  ███████╗ ███████╗        │
+│  ██╔════╝   ██╔═══██╗ ██╔══██╗ ██╔══██╗╚════██║        │
+│  ██║  ███╗  ██║   ██║ ██║  ██║ ██████╔╝    ██╔╝         │
+│  ██║   ██║  ██║   ██║ ██║  ██║ ██╔══██╗   ██╔╝          │
+│  ╚██████╔╝  ╚██████╔╝ ██████╔╝ ██║  ██║ ███████╗        │
+│   ╚═════╝    ╚═════╝  ╚═════╝  ╚═╝  ╚═╝ ╚══════╝        │
+│                                                        │
+│                           Ein                          │
+│                                                        │
+│   > experiments loaded: 12                             │
+│   > status: forging                                    │
+│   > last spark: today                                  │
+│                                                        │
+└────────────────────────────────────────────────────────┘
+`}</span>
               </pre>
             </div>
 
