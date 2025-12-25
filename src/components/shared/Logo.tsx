@@ -8,7 +8,7 @@ export function Logo() {
         <Dna className="text-primary h-6 w-6" />
       </div>
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-        EvoAvatar
+        Stark
       </span>
     </Link>
   );
