@@ -88,7 +88,7 @@ export const HeroParallax = ({
               product={product}
               translate={translateXReverse}
               key={product.title}
-            <ctrl100>
+            />
           ))}
         </motion.div>
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
