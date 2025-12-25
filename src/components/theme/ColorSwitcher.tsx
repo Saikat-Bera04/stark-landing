@@ -4,11 +4,11 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Paintbrush } from 'lucide-react';
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const colors = [
   { name: 'Default', value: 'hsl(0 0% 98%)' },
@@ -24,37 +24,26 @@ export function ColorSwitcher() {
   const { setDynamicTextColor } = useTheme();
 
   return (
-    <div className="absolute top-20 right-4 md:right-8 z-10 bg-background/50 backdrop-blur-sm p-2 rounded-lg border">
-        <div className="flex items-center gap-2">
-        <TooltipProvider>
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    <Paintbrush className="text-primary h-5 w-5" />
-                </TooltipTrigger>
-                <TooltipContent>
-                    <p>Change Website Text Color</p>
-                </TooltipContent>
-            </Tooltip>
-        </TooltipProvider>
-
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <Paintbrush className="h-5 w-5 text-primary" />
+          <span className="sr-only">Change Color Theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
         {colors.map((color) => (
-            <TooltipProvider key={color.name}>
-                <Tooltip>
-                    <TooltipTrigger asChild>
-                        <button
-                            onClick={() => setDynamicTextColor(color.value)}
-                            className="h-6 w-6 rounded-full border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all"
-                            style={{ backgroundColor: color.value }}
-                            aria-label={`Change text color to ${color.name}`}
-                        />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                        <p>{color.name}</p>
-                    </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
+          <DropdownMenuItem key={color.name} onClick={() => setDynamicTextColor(color.value)}>
+            <div className="flex items-center gap-2">
+              <div 
+                className="h-4 w-4 rounded-full border" 
+                style={{ backgroundColor: color.value }} 
+              />
+              <span>{color.name}</span>
+            </div>
+          </DropdownMenuItem>
         ))}
-        </div>
-    </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

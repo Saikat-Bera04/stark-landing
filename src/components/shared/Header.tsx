@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
+import { ColorSwitcher } from '../theme/ColorSwitcher';
 
 export function Header() {
   const pathname = usePathname();
@@ -21,6 +22,7 @@ export function Header() {
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <nav className="flex items-center">
+            <ColorSwitcher />
             <Button asChild variant="ghost">
               <Link href="/signin">Sign In</Link>
             </Button>

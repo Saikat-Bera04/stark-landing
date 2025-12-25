@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { AnimatedAvatar } from '@/components/shared/AnimatedAvatar';
-import { ColorSwitcher } from '@/components/theme/ColorSwitcher';
 import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
@@ -9,7 +8,6 @@ export function Hero() {
     <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] [mask-image:linear-gradient(to_bottom,white_5%,transparent_80%)]"></div>
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,hsl(var(--primary)/0.3),rgba(255,255,255,0))]"></div>
-        <ColorSwitcher />
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center">
           <div className="flex flex-col justify-center space-y-4 text-center lg:text-left">
