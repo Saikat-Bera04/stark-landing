@@ -88,10 +88,16 @@ export default {
             height: '0',
           },
         },
+        "hero-parallax": {
+          to: {
+            transform: "translateY(-50%)",
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        "hero-parallax": "hero-parallax 20s linear infinite",
       },
     },
   },

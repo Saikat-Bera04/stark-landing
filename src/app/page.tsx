@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/landing/AboutSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { Suspense } from "react";
 import { MacbookScrollDemo } from "@/components/landing/MacbookScroll";
+import { HeroParallaxDemo } from "@/components/landing/HeroParallaxDemo";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <AboutSection />
         <MacbookScrollDemo />
         <FeaturesSection />
+        <HeroParallaxDemo />
       </main>
       <Footer />
     </div>
