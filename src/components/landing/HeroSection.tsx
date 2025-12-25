@@ -95,7 +95,7 @@ export function HeroSection() {
               </div>
 
               <pre className="mt-6 overflow-hidden font-mono text-[10px] leading-relaxed text-primary/80 sm:text-xs md:text-sm">
-                <span className="sm:hidden">{`┌───────────────────────┐
+                <span className="block sm:hidden">{`┌───────────────────────┐
 │  ██████╗███████╗      │
 │ ██╔════╝██╔════╝      │
 │ ██║     █████╗        │
