@@ -12,12 +12,12 @@ import {
 
 const colors = [
   { name: 'Default', value: 'hsl(0 0% 98%)' },
-  { name: 'Red', value: 'hsl(0 100% 50%)' },
-  { name: 'Orange', value: 'hsl(39 100% 50%)' },
-  { name: 'Sky Blue', value: 'hsl(197 71% 73%)' },
-  { name: 'Cyan', 'value': 'hsl(180 100% 50%)' },
-  { name: 'Pink', value: 'hsl(330 100% 71%)' },
-  { name: 'Green', value: 'hsl(120 100% 50%)' },
+  { name: 'Golden', value: 'hsl(45 100% 51%)' },
+  { name: 'Cyan', value: 'hsl(180 100% 50%)' },
+  { name: 'Sky', value: 'hsl(197 71% 73%)' },
+  { name: 'Purple', value: 'hsl(283 53% 54%)' },
+  { name: 'Emerald', value: 'hsl(145 63% 49%)' },
+  { name: 'Rose', value: 'hsl(346 84% 61%)' },
 ];
 
 export function ColorSwitcher() {
