@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Github, Twitter, Linkedin } from "lucide-react"
+import { Github } from "lucide-react"
 import { ColorSwitcher } from '../theme/ColorSwitcher';
 import Link from "next/link"
 import { Dna } from 'lucide-react';
+import { GoogleIcon } from "./GoogleIcon";
+import { Button } from "../ui/button";
 
 
 const navItems = [
@@ -16,8 +18,7 @@ const navItems = [
 
 const socialLinks = [
   { label: "GitHub", href: "#", icon: Github },
-  { label: "Twitter", href: "#", icon: Twitter },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "Google", href: "#", icon: GoogleIcon },
 ]
 
 export function Header() {
@@ -127,6 +128,9 @@ export function Header() {
                   </span>
                 </a>
               ))}
+                <Link href="/signup">
+                    <Button variant="outline" size="sm">Sign Up</Button>
+                </Link>
             </div>
              <div className="hidden h-5 w-px bg-border sm:block" />
             <div className="hidden items-center gap-2.5 font-mono text-xs text-muted-foreground sm:flex px-3 py-1.5 rounded-full bg-secondary/50 border border-border/50">
