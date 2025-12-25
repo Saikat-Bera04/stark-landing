@@ -35,7 +35,7 @@ export function Hero() {
   }, [displayText, isDeleting, currentRole])
 
    return (
-    <section className="relative px-4 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-24">
+    <section className="relative px-4 sm:px-6 pt-20 sm:pt-24 pb-16 sm:pb-24">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-center lg:min-h-[70vh]">
           {/* Left column - Text */}
@@ -94,8 +94,8 @@ export function Hero() {
                 terminal://evoavatar
               </div>
 
-              <pre className="mt-6 overflow-hidden font-mono text-xs leading-relaxed text-primary/80 sm:text-sm md:text-base" style={{color: 'var(--dynamic-text-color)'}}>
-                <code className="sm:hidden block">{`┌───────────────────────┐
+              <pre className="mt-6 overflow-hidden font-mono text-primary/80">
+                <code className="sm:hidden block text-xs leading-relaxed">{`┌───────────────────────┐
 │  ██████╗███████╗      │
 │ ██╔════╝██╔════╝      │
 │ ██║     █████╗        │
@@ -106,7 +106,7 @@ export function Hero() {
 │  > memories: 4      │
 │  > status: learning   │
 └───────────────────────┘`}</code>
-                <code className="hidden sm:block">{`┌─────────────────────────────────────┐
+                <code className="hidden sm:block text-xs md:text-sm leading-relaxed" style={{color: 'var(--dynamic-text-color)'}}>{`┌─────────────────────────────────────┐
 │                                     │
 │  ██████╗ ██████╗ ██████╗ ███████╗   │
 │ ██╔════╝██╔═══██╗██╔══██╗██╔════╝   │
