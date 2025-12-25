@@ -94,7 +94,7 @@ export function Hero() {
                 terminal://evoavatar
               </div>
 
-              <pre className="mt-6 overflow-hidden font-mono text-[10px] leading-relaxed text-primary/80 sm:text-xs md:text-sm">
+              <pre className="mt-6 overflow-hidden font-mono text-xs leading-relaxed text-primary/80 sm:text-sm md:text-base" style={{color: 'var(--dynamic-text-color)'}}>
                 <code className="sm:hidden block">{`┌───────────────────────┐
 │  ██████╗███████╗      │
 │ ██╔════╝██╔════╝      │
