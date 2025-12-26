@@ -49,7 +49,8 @@ export function Hero() {
                 Forging digital
                 <br />
                 <span className="text-foreground">
-                  {displayText}
+                  {displayText || <>&nbsp;</>}
+                  <span className="animate-blink">|</span>
                 </span>
               </h1>
             </div>
