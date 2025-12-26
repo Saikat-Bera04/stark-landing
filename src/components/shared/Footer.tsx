@@ -106,12 +106,6 @@ export function Footer() {
                             </div>
                         </div>
 
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
-                            <Logo />
-                            <p className="text-sm text-muted-foreground">
-                                &copy; {new Date().getFullYear()} Stark Industries. All rights reserved.
-                            </p>
-                        </div>
                     </div>
                 </motion.div>
             </div>
