@@ -2,7 +2,7 @@
 
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
-import { Paintbrush } from 'lucide-react';
+import { Palette } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,8 +26,8 @@ export function ColorSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Paintbrush className="h-5 w-5 text-primary" />
+        <Button variant="ghost" size="icon" className="hover:bg-secondary border-none">
+          <Palette className="h-5 w-5 text-primary" />
           <span className="sr-only">Change Color Theme</span>
         </Button>
       </DropdownMenuTrigger>
