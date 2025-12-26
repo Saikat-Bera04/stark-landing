@@ -17,6 +17,8 @@ export function AboutSection() {
               src={aboutImage.imageUrl}
               alt="An abstract representation of digital connection"
               fill
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
               data-ai-hint={aboutImage.imageHint}
             />

@@ -17,6 +17,8 @@ export default function AuthLayout({
         src={authBgImage.imageUrl}
         alt="Abstract background"
         fill
+        priority
+        sizes="100vw"
         className="object-cover -z-10"
         data-ai-hint={authBgImage.imageHint}
       />
