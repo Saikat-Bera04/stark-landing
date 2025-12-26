@@ -41,7 +41,7 @@ export function Footer() {
 
     return (
         <footer ref={containerRef} className="relative bg-background border-t mt-auto overflow-hidden">
-            <div className="relative min-h-[60vh] flex flex-col justify-center">
+            <div className="relative py-24 flex flex-col justify-center">
                 <motion.div style={{ y: contentY }} className="relative z-10">
                      <div className="container mx-auto px-6 md:px-8">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
