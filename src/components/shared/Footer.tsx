@@ -31,19 +31,19 @@ export function Footer() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ['start end', 'end end'],
+        offset: ['start end', 'end start'],
     });
 
-    const contentY = useTransform(scrollYProgress, [0, 0.5, 1], ['0%', '-50%', '-100%']);
-    const logoY = useTransform(scrollYProgress, [0.5, 1], ['100%', '0%']);
-    const logoOpacity = useTransform(scrollYProgress, [0.5, 0.6], [0, 1]);
+    const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-25%']);
+    const logoY = useTransform(scrollYProgress, [0, 1], ['50%', '0%']);
+    const logoOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
 
     return (
-        <footer ref={containerRef} className="relative bg-background border-t mt-auto overflow-hidden h-[150vh]">
-            <div className="sticky top-0 h-screen">
-                <motion.div style={{ y: contentY }} className="relative h-full z-10">
-                     <div className="container mx-auto px-6 md:px-8 h-full flex flex-col justify-center">
+        <footer ref={containerRef} className="relative bg-background border-t mt-auto overflow-hidden">
+            <div className="relative min-h-[60vh] flex flex-col justify-center">
+                <motion.div style={{ y: contentY }} className="relative z-10">
+                     <div className="container mx-auto px-6 md:px-8">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                             {/* Company */}
                             <div className="flex flex-col gap-4">
