@@ -31,16 +31,17 @@ export function Footer() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ['start end', 'end end'],
+        offset: ['start end', 'end start'],
     });
 
-    const logoY = useTransform(scrollYProgress, [0.5, 1], ['100%', '0%']);
-    const contentY = useTransform(scrollYProgress, [0.7, 1], ['0%', '-100%']);
+    const contentY = useTransform(scrollYProgress, [0, 0.5, 1], ['0%', '0%', '-100%']);
+    const logoY = useTransform(scrollYProgress, [0.2, 0.7], ['100%', '0%']);
+
 
     return (
         <footer ref={containerRef} className="relative bg-background border-t mt-auto overflow-hidden">
-            <div className="container mx-auto px-6 md:px-8 flex flex-col justify-between pt-24 pb-8">
-                <motion.div style={{ y: contentY }} className="sticky top-0 z-10 bg-background">
+            <div className="container mx-auto px-6 md:px-8 pt-24 pb-8 min-h-[60vh]">
+                <motion.div style={{ y: contentY }} className="sticky top-1/2 -translate-y-1/2 z-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {/* Company */}
                         <div className="flex flex-col gap-4">
