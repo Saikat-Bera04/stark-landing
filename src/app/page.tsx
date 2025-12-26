@@ -16,9 +16,13 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <AboutSection />
-        <MacbookScrollDemo />
+        <div className="relative">
+          <MacbookScrollDemo />
+        </div>
         <FeaturesSection />
-        <HeroParallaxDemo />
+        <div className="relative">
+          <HeroParallaxDemo />
+        </div>
       </main>
       <Footer />
     </div>
