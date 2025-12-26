@@ -34,7 +34,7 @@ export function Footer() {
         offset: ['start end', 'end start'],
     });
 
-    const contentY = useTransform(scrollYProgress, [0, 0.5, 1], ['0%', '0%', '-100%']);
+    const contentY = useTransform(scrollYProgress, [0, 0.5, 0.75, 1], ['0%', '0%', '-50%', '-100%']);
     const logoY = useTransform(scrollYProgress, [0.2, 0.7], ['100%', '0%']);
 
 
