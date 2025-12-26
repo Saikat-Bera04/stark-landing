@@ -10,10 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Mic, Send } from "lucide-react";
+import { Mic } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { createMemory } from "@/ai/flows/evolving-avatar-memories";
+import { GlowingButton } from "../ui/glowing-button";
 
 export function AvatarTraining() {
     const { toast } = useToast();
@@ -87,10 +88,7 @@ export function AvatarTraining() {
                 </Button>
                 {isRecording && <span className="ml-2 text-sm text-destructive animate-pulse">Recording...</span>}
             </div>
-          <Button type="submit" disabled={!text.trim() || isSubmitting || isRecording}>
-            <Send className="mr-2 h-4 w-4" />
-            Create Memory
-          </Button>
+            <GlowingButton type="submit" text="Create Memory" />
         </CardFooter>
       </form>
     </Card>

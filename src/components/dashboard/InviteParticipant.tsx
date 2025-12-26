@@ -12,9 +12,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { UserPlus } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { GlowingButton } from '../ui/glowing-button';
 
 export function InviteParticipant() {
   const [email, setEmail] = useState('');
@@ -70,10 +70,7 @@ export function InviteParticipant() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button type="submit">
-              <UserPlus className="mr-2 h-4 w-4" />
-              Send Invitation
-            </Button>
+            <GlowingButton type="submit" text="Send Invitation" />
           </CardFooter>
         </form>
       )}

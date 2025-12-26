@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { GlowingButton } from "../ui/glowing-button"
 
 const roles = ["building interfaces", "exploring systems", "breaking barriers", "forging ideas", "crafting code"]
 
@@ -59,23 +60,8 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-3">
-              <Link
-                href="/signup"
-                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg border border-primary bg-primary/10 px-7 py-4 sm:py-3.5 font-mono text-sm text-primary transition-all duration-500 hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
-              >
-                <span className="relative z-10">Create Your Avatar</span>
-                <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
-                <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
-              </Link>
-              <Link
-                href="/signin"
-                className="group inline-flex items-center justify-center gap-3 rounded-lg border border-border px-7 py-4 sm:py-3.5 font-mono text-sm text-muted-foreground transition-all duration-300 hover:border-foreground hover:text-foreground hover:bg-secondary/50 active:scale-[0.98]"
-              >
-                <span>Sign In</span>
-                <span className="opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                  →
-                </span>
-              </Link>
+              <GlowingButton text="Create Your Avatar" href="/signup" />
+              <GlowingButton text="Sign In" href="/signin" />
             </div>
           </div>
 

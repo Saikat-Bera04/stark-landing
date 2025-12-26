@@ -9,6 +9,7 @@ import Link from "next/link"
 import { Dna } from 'lucide-react';
 import { GoogleIcon } from "./GoogleIcon";
 import { Button } from "../ui/button";
+import { GlowingButton } from "../ui/glowing-button";
 
 
 const navItems = [
@@ -128,9 +129,7 @@ export function Header() {
                   </span>
                 </a>
               ))}
-                <Link href="/signup">
-                    <Button variant="outline" size="sm">Sign Up</Button>
-                </Link>
+                <GlowingButton text="Sign Up" href="/signup" />
             </div>
              <div className="hidden h-5 w-px bg-border sm:block" />
             <div className="hidden items-center gap-2.5 font-mono text-xs text-muted-foreground sm:flex px-3 py-1.5 rounded-full bg-secondary/50 border border-border/50">
