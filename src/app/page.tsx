@@ -9,7 +9,7 @@ import { HeroParallaxDemo } from "@/components/landing/HeroParallaxDemo";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col relative">
       <Suspense>
         <Header />
       </Suspense>

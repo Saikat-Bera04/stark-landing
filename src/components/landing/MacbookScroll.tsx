@@ -35,7 +35,7 @@ const Badge = ({ className }: { className?: string }) => {
 
 export function MacbookScrollDemo() {
   return (
-    <div className="w-full overflow-hidden bg-background">
+    <div className="w-full overflow-hidden bg-background relative">
       <MacbookScroll
         title={
           <span>
