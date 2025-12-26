@@ -170,12 +170,22 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        {src && <Image
-          src={src}
-          alt="macbook image"
-          fill
-          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
-        />}
+        {src?.endsWith('.mp4') ? (
+            <video
+              src={src}
+              autoPlay
+              muted
+              loop
+              className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+            />
+        ) : src ? (
+            <Image
+                src={src}
+                alt="macbook image"
+                fill
+                className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+            />
+        ) : null}
       </motion.div>
     </div>
   );
