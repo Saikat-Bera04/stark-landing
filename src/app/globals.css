@@ -188,4 +188,16 @@ body {
   .animate-blink {
     animation: blink 1s step-end infinite;
   }
+  
+  .cursor-glow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    border-radius: 9999px;
+    background-color: hsl(var(--primary) / 0.5);
+    filter: blur(60px);
+    z-index: 9999;
+    transition: transform 0.2s ease-out, width 0.3s ease-out, height 0.3s ease-out;
+  }
 }
