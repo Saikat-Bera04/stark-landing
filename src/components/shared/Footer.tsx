@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Github, Linkedin, Twitter } from 'lucide-react';
-import { Logo } from './Logo';
 
 const footerLinks = {
     company: [
@@ -28,7 +27,6 @@ const footerLinks = {
     ]
 };
 
-
 export function Footer() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -37,17 +35,12 @@ export function Footer() {
     });
 
     const logoY = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
-    
+    const contentY = useTransform(scrollYProgress, [0.7, 1], ['0%', '-100%']);
 
     return (
         <footer ref={containerRef} className="relative bg-background border-t mt-auto overflow-hidden">
             <div className="container mx-auto px-6 md:px-8 flex flex-col justify-between pt-24 pb-8">
-                <div className="sticky top-0">
-                    <motion.div style={{ y: logoY }} className="absolute inset-0 flex items-center justify-center -z-10">
-                        <h1 className="text-[30vw] md:text-[25vw] lg:text-[20vw] font-bold text-secondary select-none font-headline">
-                           STARK
-                        </h1>
-                    </motion.div>
+                <motion.div style={{ y: contentY }} className="sticky top-0 z-10 bg-background">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {/* Company */}
                         <div className="flex flex-col gap-4">
@@ -76,7 +69,7 @@ export function Footer() {
                             </ul>
                         </div>
                         {/* Social */}
-                            <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-4">
                             <h3 className="font-semibold text-foreground">Social</h3>
                             <ul className="space-y-2">
                                 {footerLinks.social.map((link) => (
@@ -89,7 +82,7 @@ export function Footer() {
                                 ))}
                             </ul>
                         </div>
-                            {/* Support */}
+                        {/* Support */}
                         <div className="flex flex-col gap-4">
                             <h3 className="font-semibold text-foreground">Support</h3>
                             <ul className="space-y-2">
@@ -103,7 +96,12 @@ export function Footer() {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </motion.div>
+                <motion.div style={{ y: logoY }} className="absolute inset-0 flex items-center justify-center -z-0">
+                    <h1 className="text-[30vw] md:text-[25vw] lg:text-[20vw] font-bold text-secondary select-none font-headline">
+                        STARK
+                    </h1>
+                </motion.div>
             </div>
         </footer>
     );
