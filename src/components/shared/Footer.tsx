@@ -31,10 +31,10 @@ export function Footer() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ['start end', 'end start'],
+        offset: ['start end', 'end end'],
     });
 
-    const logoY = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
+    const logoY = useTransform(scrollYProgress, [0.5, 1], ['100%', '0%']);
     const contentY = useTransform(scrollYProgress, [0.7, 1], ['0%', '-100%']);
 
     return (
