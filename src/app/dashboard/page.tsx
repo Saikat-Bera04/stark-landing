@@ -7,7 +7,7 @@ import { BrainCircuit } from "lucide-react";
 
 function WelcomeDashboard() {
     return (
-        <Card className="col-span-1 md:col-span-2 lg:col-span-3">
+        <Card className="col-span-1 md:col-span-2 lg:col-span-3 card-glass">
           <CardHeader>
             <div className="flex items-center gap-4">
               <BrainCircuit className="h-10 w-10 text-primary" />

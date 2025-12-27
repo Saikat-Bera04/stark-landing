@@ -23,6 +23,7 @@ import {
 import { Logo } from "@/components/shared/Logo";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { BackgroundDots } from "@/components/shared/BackgroundDots";
 
 export default function DashboardLayout({
   children,
@@ -105,13 +106,16 @@ export default function DashboardLayout({
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-14 items-center gap-4 border-b bg-background px-4 md:px-6">
-            <SidebarTrigger className="md:hidden" />
-            <div className="flex-1">
-                <h1 className="text-lg font-semibold md:text-2xl font-headline">Dashboard</h1>
-            </div>
-        </header>
-        <main className="flex-1 p-4 md:p-6">{children}</main>
+        <div className="relative w-full h-full">
+            <BackgroundDots />
+            <header className="flex h-14 items-center gap-4 border-b bg-transparent px-4 md:px-6 z-10 relative">
+                <SidebarTrigger className="md:hidden" />
+                <div className="flex-1">
+                    <h1 className="text-lg font-semibold md:text-2xl font-headline">Dashboard</h1>
+                </div>
+            </header>
+            <main className="flex-1 p-4 md:p-6 z-10 relative">{children}</main>
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );

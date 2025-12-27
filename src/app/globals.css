@@ -97,6 +97,10 @@ body {
     text-wrap: balance;
   }
 
+  .card-glass {
+    @apply bg-card/60 backdrop-blur-lg border-border/30;
+  }
+
   @keyframes float {
     0%, 100% {
       transform: translateY(0);
@@ -195,8 +199,8 @@ body {
     top: 0;
     pointer-events: none;
     border-radius: 9999px;
-    background-color: hsl(var(--primary) / 0.3);
-    filter: blur(80px);
+    background-color: hsl(var(--primary) / 0.15);
+    filter: blur(120px);
     z-index: 9999;
     transition: transform 0.2s ease-out, width 0.3s ease-out, height 0.3s ease-out;
   }

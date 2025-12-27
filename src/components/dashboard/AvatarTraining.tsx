@@ -63,7 +63,7 @@ export function AvatarTraining() {
     }
 
   return (
-    <Card>
+    <Card className="card-glass">
       <CardHeader>
         <CardTitle className="font-headline">Train Your Avatar</CardTitle>
         <CardDescription>
@@ -74,7 +74,7 @@ export function AvatarTraining() {
         <CardContent>
           <Textarea
             placeholder="Share a thought, a feeling, or a memory... e.g., 'I've recently started enjoying jazz music, especially Miles Davis.'"
-            className="min-h-48 resize-none"
+            className="min-h-48 resize-none bg-transparent"
             value={text}
             onChange={(e) => setText(e.target.value)}
             disabled={isSubmitting || isRecording}

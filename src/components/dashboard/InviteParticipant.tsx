@@ -35,7 +35,7 @@ export function InviteParticipant() {
 
 
   return (
-    <Card>
+    <Card className="card-glass">
       <CardHeader>
         <CardTitle className="font-headline">Invite Your Trusted Partner</CardTitle>
         <CardDescription>
@@ -44,7 +44,7 @@ export function InviteParticipant() {
       </CardHeader>
       {invited ? (
         <CardContent>
-            <div className="flex flex-col items-center justify-center p-6 border rounded-lg bg-secondary">
+            <div className="flex flex-col items-center justify-center p-6 border rounded-lg bg-secondary/80">
                 <Avatar className="h-24 w-24 mb-4">
                     <AvatarImage src="https://picsum.photos/seed/participant1/200/200" alt="Participant" />
                     <AvatarFallback>P</AvatarFallback>
@@ -66,6 +66,7 @@ export function InviteParticipant() {
                 placeholder="partner@example.com" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="bg-transparent"
               />
             </div>
           </CardContent>

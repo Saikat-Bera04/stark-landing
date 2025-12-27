@@ -33,7 +33,7 @@ const mockMemories = [
 export function MemoryList() {
   return (
     <div className="space-y-4">
-      <Card>
+      <Card className="card-glass">
         <CardHeader>
           <CardTitle className="font-headline">Avatar Memories</CardTitle>
           <CardDescription>
@@ -43,7 +43,7 @@ export function MemoryList() {
       </Card>
       <div className="grid gap-4 md:grid-cols-2">
         {mockMemories.map((memory) => (
-          <Card key={memory.id}>
+          <Card key={memory.id} className="card-glass">
             <CardHeader>
               <div className="flex items-start gap-4">
                   <ScrollText className="h-6 w-6 text-accent mt-1" />

@@ -28,7 +28,7 @@ export function ChatInterface() {
   };
 
   return (
-    <Card className="flex flex-col h-[calc(100vh-10rem)]">
+    <Card className="flex flex-col h-[calc(100vh-10rem)] card-glass">
         <CardHeader>
             <CardTitle className="font-headline">Chat with your EvoAvatar</CardTitle>
             <CardDescription>Have a conversation and see how its personality unfolds.</CardDescription>
@@ -41,7 +41,7 @@ export function ChatInterface() {
                 <AvatarFallback>A</AvatarFallback>
               </Avatar>
             )}
-            <div className={`rounded-lg p-3 max-w-xs md:max-w-md ${msg.from === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary'}`}>
+            <div className={`rounded-lg p-3 max-w-xs md:max-w-md ${msg.from === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary/80'}`}>
               <p className="text-sm">{msg.text}</p>
             </div>
              {msg.from === 'user' && (
@@ -53,13 +53,14 @@ export function ChatInterface() {
           </div>
         ))}
       </CardContent>
-      <div className="p-4 border-t">
+      <div className="p-4 border-t border-border/30">
         <div className="relative flex items-center gap-2">
           <Input
             placeholder="Type your message..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+            className="bg-transparent"
           />
           <GlowingButton text="Send" onClick={handleSend} />
         </div>
