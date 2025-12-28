@@ -25,7 +25,7 @@ export function DashboardHeader() {
   }, [searchParams]);
 
   return (
-    <header className="flex h-14 items-center border-b bg-neutral-800 px-4 md:px-6">
+    <header className="flex h-14 items-center bg-neutral-800 px-4 md:px-6">
       <div className="flex items-center gap-3">
         <div className="text-primary">{currentView.icon}</div>
         <h1 className="text-lg font-semibold text-foreground">
