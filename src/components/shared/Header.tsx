@@ -54,9 +54,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
         <nav className="flex items-center justify-between">
            <Link href="/" className="flex items-center gap-2 text-2xl font-bold group">
-                <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <Image src="/stark.png" alt="Stark Logo" width={24} height={24} className="h-6 w-6" />
-                </div>
+                <Image src="/stark.png" alt="Stark Logo" width={32} height={32} className="h-8 w-8" />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                     Stark
                 </span>
