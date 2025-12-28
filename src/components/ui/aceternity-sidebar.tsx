@@ -1,5 +1,5 @@
 'use client';
-import React, 'useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowLeft,
   Bot,
@@ -69,7 +69,7 @@ export function SidebarDemo() {
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-center">
-            <ColorSwitcher />
+            <ColorSwitcher inSidebar={true} />
           </div>
           <SidebarLink
             link={{
