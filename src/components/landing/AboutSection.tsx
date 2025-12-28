@@ -41,18 +41,27 @@ export function AboutSection() {
                 <CardTitle className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">One-to-One Connection</CardTitle>
             </CardHeader>
             <CardContent>
-                <ul className="grid gap-4 text-muted-foreground md:text-lg">
+                <ul className="grid gap-4 text-muted-foreground text-base">
                     <li className="flex items-start gap-3">
                         <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                        <span>Strict one-to-one training ensures only you and one approved person shape your avatar.</span>
+                        <div>
+                            <h4 className="font-semibold text-foreground">Hyper-Personalization</h4>
+                            <span>Strict one-to-one training ensures only you and one approved person shape your avatar.</span>
+                        </div>
                     </li>
                      <li className="flex items-start gap-3">
                         <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                        <span>Continuously evolves through memory-based learning, not model retraining.</span>
+                        <div>
+                            <h4 className="font-semibold text-foreground">Adaptive Memory</h4>
+                            <span>Continuously evolves through memory-based learning, not model retraining.</span>
+                        </div>
                     </li>
                      <li className="flex items-start gap-3">
                         <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                        <span>Your data remains private, building a digital personality that is truly yours.</span>
+                        <div>
+                           <h4 className="font-semibold text-foreground">Immutable Trust</h4>
+                            <span>Your data remains private, building a digital personality that is truly yours.</span>
+                        </div>
                     </li>
                 </ul>
             </CardContent>
