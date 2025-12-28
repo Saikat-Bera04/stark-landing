@@ -1,9 +1,10 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { BrainCircuit, MessageSquare, BookUser, KeyRound } from "lucide-react";
+import { MessageSquare, BookUser, KeyRound } from "lucide-react";
+import { ColorChangingDots } from "@/components/shared/ColorChangingDots";
 
 const features = [
   {
-    icon: <BrainCircuit className="h-8 w-8 text-primary" />,
+    icon: <ColorChangingDots />,
     title: "Continuous Learning",
     description: "Your avatar learns and evolves from every text and voice interaction, growing more personalized over time.",
   },
@@ -40,7 +41,7 @@ export function FeaturesSection() {
                     {features.map((feature, index) => (
                         <Card key={index} className="bg-background/50 hover:bg-background/80 transition-colors hover:shadow-lg hover:shadow-primary/10">
                             <CardHeader className="flex flex-row items-start gap-4">
-                                <div>{feature.icon}</div>
+                                <div className="h-8 w-8 flex items-center justify-center">{feature.icon}</div>
                                 <div className="grid gap-1">
                                     <CardTitle className="font-headline" style={{color: 'var(--dynamic-text-color)'}}>{feature.title}</CardTitle>
                                     <CardDescription className="text-muted-foreground">{feature.description}</CardDescription>

@@ -204,4 +204,21 @@ body {
     z-index: 9999;
     transition: transform 0.2s ease-out, width 0.3s ease-out, height 0.3s ease-out;
   }
+
+  @keyframes color-change {
+    0%, 100% { background-color: hsl(var(--primary)); }
+    50% { background-color: hsl(var(--accent)); }
+  }
+
+  .animate-color-change-1 {
+    animation: color-change 4s ease-in-out infinite;
+  }
+  .animate-color-change-2 {
+    animation: color-change 4s ease-in-out infinite;
+    animation-delay: 0.33s;
+  }
+  .animate-color-change-3 {
+    animation: color-change 4s ease-in-out infinite;
+    animation-delay: 0.66s;
+  }
 }
