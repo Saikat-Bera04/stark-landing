@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { MessageSquare, KeyRound } from "lucide-react";
+import { KeyRound } from "lucide-react";
 import { ColorChangingDots } from "@/components/shared/ColorChangingDots";
 
 const features = [
@@ -19,7 +19,7 @@ const features = [
     description: "Converse with your avatar, provide feedback, and watch its personality unfold in a seamless chat experience.",
   },
   {
-    icon: <KeyRound className="h-8 w-8 text-primary" />,
+    icon: <ColorChangingDots />,
     title: "Privacy First",
     description: "With a strict one-to-one training model, your digital identity is shaped only by those you trust. No crowdsourcing, no data leaks.",
   },
