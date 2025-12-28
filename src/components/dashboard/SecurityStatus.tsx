@@ -67,8 +67,9 @@ export default function SecurityStatus({ statuses }: SecurityStatusProps) {
       title="SECURITY STATUS"
       intent="success"
       addon={<Badge variant="outline">ONLINE</Badge>}
+      className="w-full h-full"
     >
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-row gap-4">
         <div className="grid grid-cols-1 gap-4 py-2 px-1">
           {statuses.map((item, index) => (
             <SecurityStatusItem
