@@ -5,9 +5,11 @@ export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 text-2xl font-bold group">
       <Image src="/stark.png" alt="Stark Logo" width={32} height={32} className="h-8 w-8" />
-      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+      <span className="text-foreground">
         Stark
       </span>
     </Link>
   );
 }
+
+    
