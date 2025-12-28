@@ -6,7 +6,6 @@ import Image from "next/image";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Bullet } from "@/components/ui/bullet";
-import placeholderImages from '@/lib/placeholder-images.json';
 
 const securityStatusItemVariants = cva("border rounded-md ring-4", {
   variants: {
@@ -55,12 +54,6 @@ interface SecurityStatusProps {
   statuses: SecurityStatusType[];
 }
 
-const securityBotImage = placeholderImages.placeholderImages.find(p => p.id === "security-bot") || {
-  imageUrl: "https://picsum.photos/seed/security-bot/1000/1000",
-  imageHint: "abstract security"
-};
-
-
 export default function SecurityStatus({ statuses }: SecurityStatusProps) {
   return (
     <DashboardCard
@@ -83,11 +76,11 @@ export default function SecurityStatus({ statuses }: SecurityStatusProps) {
         </div>
         <div className="relative flex-1 aspect-square">
           <Image
-            src={securityBotImage.imageUrl}
+            src="/assets/bot_greenprint.gif"
             alt="Security Status"
             fill
             className="size-full object-contain"
-            data-ai-hint={securityBotImage.imageHint}
+            unoptimized
           />
         </div>
       </div>
