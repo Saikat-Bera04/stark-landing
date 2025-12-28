@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Logo } from '../shared/Logo';
 import { Avatar, AvatarFallback, AvatarImage } from './avatar';
+import Image from 'next/image';
 
 interface SidebarLink {
   label: string;
@@ -84,9 +85,9 @@ export const LogoIcon = () => {
   return (
     <Link
       href="/"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black"
+      className="relative z-20 flex items-center justify-center py-1"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" />
+      <Image src="/stark.png" alt="Stark Logo" width={32} height={32} className="h-8 w-8" />
     </Link>
   );
 };
