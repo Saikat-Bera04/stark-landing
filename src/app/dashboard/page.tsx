@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AvatarTraining } from "@/components/dashboard/AvatarTraining";
 import { ChatInterface } from "@/components/dashboard/ChatInterface";
