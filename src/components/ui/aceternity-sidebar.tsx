@@ -103,21 +103,12 @@ export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
       animate={{
         width: open ? '240px' : '80px',
       }}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       className={cn(
         'relative z-50 flex h-full flex-col justify-between border-r border-neutral-200 bg-gray-100 p-5 transition-all dark:border-neutral-700 dark:bg-neutral-800'
       )}
     >
-      <button
-        onClick={() => setOpen(!open)}
-        className="absolute -right-3 top-10 flex h-6 w-6 items-center justify-center rounded-full border border-neutral-200 bg-gray-100 text-black transition-all hover:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
-      >
-        <ArrowLeft
-          className={cn(
-            'h-4 w-4 shrink-0 text-neutral-700 transition-all dark:text-neutral-200',
-            open ? 'rotate-0' : 'rotate-180'
-          )}
-        />
-      </button>
       {children}
     </motion.div>
   );
