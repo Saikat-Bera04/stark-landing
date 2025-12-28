@@ -8,7 +8,7 @@ import {
   ScrollText,
   UserPlus,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -59,7 +59,7 @@ export function SidebarDemo() {
           {open ? <Logo /> : <LogoIcon />}
           <div className="mt-8 flex flex-col gap-2">
             {links.map((link, idx) => (
-              <SidebarLink key={idx} link={link} />
+              <SidebarLink key={idx} link={link} open={open} />
             ))}
           </div>
         </div>
@@ -75,6 +75,7 @@ export function SidebarDemo() {
                 </Avatar>
               ),
             }}
+            open={open}
           />
         </div>
       </SidebarBody>
@@ -123,7 +124,7 @@ export const SidebarBody = (props: React.ComponentProps<'div'>) => {
   );
 };
 
-export const SidebarLink = ({ link }: { link: SidebarLink }) => {
+export const SidebarLink = ({ link, open }: { link: SidebarLink, open: boolean }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isActive, setIsActive] = useState(false);
@@ -158,16 +159,19 @@ export const SidebarLink = ({ link }: { link: SidebarLink }) => {
         ),
       })}
 
-      <motion.span
-        animate={{
-          display: 'inline-block',
-          opacity: 1,
-          width: 'auto',
-        }}
-        className="font-medium whitespace-pre text-black dark:text-white"
-      >
-        {link.label}
-      </motion.span>
+      <AnimatePresence>
+        {open && (
+            <motion.span
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: 'auto' }}
+            exit={{ opacity: 0, width: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="font-medium whitespace-pre text-black dark:text-white overflow-hidden"
+          >
+            {link.label}
+          </motion.span>
+        )}
+      </AnimatePresence>
     </Link>
   );
 };
