@@ -170,22 +170,13 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        {src?.endsWith('.mp4') ? (
-            <video
-              src={src}
-              autoPlay
-              muted
-              loop
-              className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
-            />
-        ) : src ? (
-            <Image
-                src={src}
-                alt="macbook image"
-                fill
-                className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
-            />
-        ) : null}
+        <video
+          src="/macbook ph.mp4"
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+        />
       </motion.div>
     </div>
   );
@@ -669,6 +660,3 @@ const AceternityLogo = () => {
     </svg>
   );
 };
-
-    
-
