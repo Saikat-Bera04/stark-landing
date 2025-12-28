@@ -68,9 +68,6 @@ export function SidebarDemo() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-center">
-            <ColorSwitcher inSidebar={true} />
-          </div>
           <SidebarLink
             link={{
               label: 'Profile',

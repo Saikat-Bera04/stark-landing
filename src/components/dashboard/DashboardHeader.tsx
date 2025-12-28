@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Home, Bot, MessageSquare, ScrollText, UserPlus, User, FileText } from "lucide-react";
+import { ColorSwitcher } from "../theme/ColorSwitcher";
 
 const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
   dashboard: { title: "Dashboard", icon: <Home className="h-5 w-5" /> },
@@ -26,12 +27,15 @@ export function DashboardHeader() {
   }, [searchParams]);
 
   return (
-    <header className="flex h-12 items-center bg-neutral-800 px-4 md:px-6">
+    <header className="flex h-12 items-center justify-between bg-neutral-800 px-4 md:px-6">
       <div className="flex items-center gap-3">
         <div className="text-primary">{currentView.icon}</div>
         <h1 className="text-md font-semibold text-foreground">
           {currentView.title}
         </h1>
+      </div>
+      <div className="flex items-center">
+        <ColorSwitcher />
       </div>
     </header>
   );
