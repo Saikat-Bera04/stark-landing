@@ -14,7 +14,7 @@ const features = [
     description: "Opinions, preferences, and behaviors are stored as structured memories, enabling complex and consistent personality traits.",
   },
   {
-    icon: <MessageSquare className="h-8 w-8 text-primary" />,
+    icon: <ColorChangingDots />,
     title: "Engaging Chat Interface",
     description: "Converse with your avatar, provide feedback, and watch its personality unfold in a seamless chat experience.",
   },
