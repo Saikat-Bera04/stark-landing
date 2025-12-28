@@ -234,25 +234,13 @@ function SocialLink({ platform, handle }: { platform: string; handle: string }) 
 
     if (!style || !handle) return null;
     
-    let displayHandle = handle;
-    try {
-        if (handle.startsWith('http')) {
-            const url = new URL(handle);
-            displayHandle = url.pathname.split('/').filter(Boolean).pop() || handle;
-        }
-    } catch (e) {
-        // if URL is malformed, use handle as is
-    }
-    displayHandle = displayHandle.replace(/^@/, '');
-
-
     return (
         <a href={style.getUrl(handle)} target="_blank" rel="noopener noreferrer" className={cn(
             "flex items-center gap-2 text-sm text-white rounded-md px-3 py-1.5 transition-transform hover:scale-105",
             style.className
         )}>
             {style.icon}
-            <span>{displayHandle}</span>
+            <span>{platform}</span>
         </a>
     );
 }
