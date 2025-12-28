@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {
   ArrowLeft,
   Bot,
+  BrainCircuit,
   Home,
   MessageSquare,
   ScrollText,
@@ -105,10 +106,15 @@ export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
       animate={{
         width: open ? '240px' : '80px',
       }}
+      transition={{
+        type: 'spring',
+        stiffness: 400,
+        damping: 40,
+      }}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       className={cn(
-        'relative z-50 flex h-full flex-col justify-between border-r border-neutral-200 bg-gray-100 p-5 transition-all dark:border-neutral-700 dark:bg-neutral-800'
+        'relative z-50 flex h-full flex-col justify-between border-r border-neutral-200 bg-gray-100 p-5 dark:border-neutral-700 dark:bg-neutral-800'
       )}
     >
       {children}
