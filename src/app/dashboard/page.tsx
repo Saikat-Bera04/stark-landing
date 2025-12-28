@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { AvatarTraining } from "@/components/dashboard/AvatarTraining";
 import { ChatInterface } from "@/components/dashboard/ChatInterface";
 import { MemoryList } from "@/components/dashboard/MemoryList";
@@ -24,12 +25,9 @@ function WelcomeDashboard() {
     );
 }
 
-export default function DashboardPage({
-  searchParams,
-}: {
-  searchParams: { view?: string };
-}) {
-  const { view } = searchParams;
+function DashboardPageContent() {
+  const searchParams = useSearchParams();
+  const view = searchParams.get('view');
   
   const renderView = () => {
     switch (view) {
@@ -47,4 +45,13 @@ export default function DashboardPage({
   };
 
   return <div className="w-full h-full">{renderView()}</div>;
+}
+
+
+export default function DashboardPage() {
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <DashboardPageContent />
+    </React.Suspense>
+  );
 }
