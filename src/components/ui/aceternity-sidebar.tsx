@@ -123,7 +123,7 @@ export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       className={cn(
-        'relative z-50 flex h-full flex-col justify-between border-r border-neutral-700 bg-neutral-800 p-5'
+        'relative z-50 flex h-full flex-col justify-between bg-neutral-800 p-5'
       )}
     >
       {children}
