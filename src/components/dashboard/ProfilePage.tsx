@@ -19,7 +19,7 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  Twitter,
+  X,
   Edit,
   Save,
 } from 'lucide-react';
@@ -119,7 +119,7 @@ export function ProfilePage() {
                     <Input id="linkedin" placeholder="LinkedIn" className="pl-10 bg-transparent" value={formData.linkedin} onChange={handleInputChange} />
                     </div>
                     <div className="relative">
-                    <Twitter className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                    <X className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <Input id="twitter" placeholder="X (Twitter)" className="pl-10 bg-transparent" value={formData.twitter} onChange={handleInputChange} />
                     </div>
                 </div>
@@ -220,7 +220,7 @@ function SocialLink({ platform, handle }: { platform: string; handle: string }) 
         Instagram: { icon: <Instagram className="h-4 w-4" />, className: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" },
         Facebook: { icon: <Facebook className="h-4 w-4" />, className: "bg-blue-600" },
         LinkedIn: { icon: <Linkedin className="h-4 w-4" />, className: "bg-sky-700" },
-        "X (Twitter)": { icon: <Twitter className="h-4 w-4" />, className: "bg-neutral-900" },
+        "X (Twitter)": { icon: <X className="h-4 w-4" />, className: "bg-black" },
     };
 
     const style = platformStyles[platform];
