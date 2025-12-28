@@ -6,8 +6,6 @@ import { MemoryList } from "@/components/dashboard/MemoryList";
 import { InviteParticipant } from "@/components/dashboard/InviteParticipant";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BrainCircuit } from "lucide-react";
-import SecurityStatus from "@/components/dashboard/SecurityStatus";
-import type { SecurityStatus as SecurityStatusType } from "@/types/dashboard";
 
 
 function WelcomeDashboard() {
@@ -33,27 +31,6 @@ export default function DashboardPage({
 }) {
   const { view } = searchParams;
   
-  const securityStatuses: SecurityStatusType[] = [
-    {
-      title: "Core AI",
-      value: "Online",
-      status: "Nominal",
-      variant: "success",
-    },
-    {
-      title: "Memory DB",
-      value: "Connected",
-      status: "Secure",
-      variant: "success",
-    },
-    {
-      title: "API",
-      value: "Operational",
-      status: "Normal",
-      variant: "success",
-    },
-  ];
-
   const renderView = () => {
     switch (view) {
       case "training":
@@ -64,8 +41,6 @@ export default function DashboardPage({
         return <MemoryList />;
       case "invite":
         return <InviteParticipant />;
-      case "security":
-        return <SecurityStatus statuses={securityStatuses} />;
       default:
         return <WelcomeDashboard />;
     }
