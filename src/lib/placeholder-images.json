@@ -25,12 +25,6 @@
       "imageHint": "person portrait"
     },
     {
-      "id": "security-bot-anim",
-      "description": "Animated security bot graphic",
-      "imageUrl": "https://images.unsplash.com/photo-1696013910376-c56f76dd8178?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzZWN1cml0eSUyMGJvdHxlbnwwfHx8fDE3NjY4OTcwMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "security bot"
-    },
-    {
       "id": "gallery-1",
       "description": "Gallery image 1",
       "imageUrl": "https://images.unsplash.com/photo-1610571098334-9110b5ae0fd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMG5hdHVyZXxlbnwwfHx8fDE3NjY2NDA3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
