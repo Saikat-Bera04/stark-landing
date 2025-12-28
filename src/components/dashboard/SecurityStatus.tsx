@@ -86,7 +86,6 @@ export default function SecurityStatus({ statuses }: SecurityStatusProps) {
             src={securityBotImage.imageUrl}
             alt="Security Status"
             fill
-            quality={90}
             className="size-full object-contain"
             data-ai-hint={securityBotImage.imageHint}
           />
