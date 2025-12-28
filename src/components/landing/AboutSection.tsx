@@ -1,5 +1,29 @@
 import { CheckCircle } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import SecurityStatus from '../dashboard/SecurityStatus';
+import type { SecurityStatus as SecurityStatusType } from '@/types/dashboard';
+
+
+const statuses: SecurityStatusType[] = [
+    {
+      title: "Core System",
+      value: "Online",
+      status: "Operational",
+      variant: "success",
+    },
+    {
+      title: "Memory DB",
+      value: "Syncing",
+      status: "Indexing new data",
+      variant: "warning",
+    },
+    {
+      title: "Firewall",
+      value: "Active",
+      status: "No threats detected",
+      variant: "success",
+    },
+];
 
 export function AboutSection() {
   return (
@@ -7,17 +31,9 @@ export function AboutSection() {
       <div className="container px-4 md:px-6">
         <div className="grid items-stretch justify-center gap-8 md:grid-cols-2 lg:gap-12">
           
-          <Card className="card-glass flex flex-col">
-            <CardHeader>
-                <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm mb-2 w-fit">The Core Problem</div>
-                <CardTitle className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">AI Without Trust is a Façade</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Most AI avatars are built on crowdsourced data, lacking genuine personality and ethical boundaries. Your identity shouldn't be a democratic experiment. We believe true digital representation requires a foundation of trust and privacy.
-              </p>
-            </CardContent>
-          </Card>
+         <div className="w-full h-full flex items-center justify-center">
+            <SecurityStatus statuses={statuses} />
+         </div>
           
           <Card className="card-glass flex flex-col">
             <CardHeader>
