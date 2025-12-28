@@ -76,7 +76,7 @@ export default function SecurityStatus({ statuses }: SecurityStatusProps) {
         </div>
         <div className="relative flex-1 aspect-square">
           <Image
-            src="/assets/bot_greenprint.gif"
+            src="/bot_greenprint.gif"
             alt="Security Status"
             fill
             className="size-full object-contain"
