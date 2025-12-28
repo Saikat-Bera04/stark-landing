@@ -1,9 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import {
-  IconArrowLeft,
-  IconSettings,
-  IconUserBolt,
+  ArrowLeft,
   BrainCircuit,
   Home,
   MessageSquare,
@@ -113,7 +111,7 @@ export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
         onClick={() => setOpen(!open)}
         className="absolute -right-3 top-10 flex h-6 w-6 items-center justify-center rounded-full border border-neutral-200 bg-gray-100 text-black transition-all hover:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
       >
-        <IconArrowLeft
+        <ArrowLeft
           className={cn(
             'h-4 w-4 shrink-0 text-neutral-700 transition-all dark:text-neutral-200',
             open ? 'rotate-0' : 'rotate-180'
