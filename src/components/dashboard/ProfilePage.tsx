@@ -24,6 +24,7 @@ import {
   Save,
 } from 'lucide-react';
 import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
 
 interface ProfileData {
     instagram: string;
@@ -57,6 +58,11 @@ export function ProfilePage() {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { id, value } = e.target;
         setFormData(prev => ({...prev, [id]: value}));
+    }
+
+    const handleCancel = () => {
+        setFormData(profileData);
+        setIsEditing(false);
     }
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -149,7 +155,7 @@ export function ProfilePage() {
                 </div>
             </CardContent>
             <CardFooter className='justify-between'>
-                <Button variant="ghost" onClick={() => setIsEditing(false)}>Cancel</Button>
+                <Button variant="ghost" onClick={handleCancel}>Cancel</Button>
                 <GlowingButton type="submit" text="Save Profile" />
             </CardFooter>
             </form>
@@ -161,7 +167,7 @@ export function ProfilePage() {
                     <CardTitle>Your Profile</CardTitle>
                     <CardDescription>This is the information your avatar knows about you.</CardDescription>
                 </div>
-                <Button variant="outline" size="icon" onClick={() => setIsEditing(true)}>
+                <Button variant="outline" size="icon" onClick={() => { setIsEditing(true); setFormData(profileData); }}>
                     <Edit className="h-4 w-4" />
                 </Button>
             </CardHeader>
@@ -169,7 +175,7 @@ export function ProfilePage() {
                 {Object.values(profileData).every(val => val === '') ? (
                     <div className='text-center py-12'>
                         <p className='text-muted-foreground mb-4'>Your profile is empty. Complete it to personalize your avatar.</p>
-                        <GlowingButton text='Complete Your Profile' onClick={() => setIsEditing(true)} />
+                        <GlowingButton text='Complete Your Profile' onClick={() => { setIsEditing(true); setFormData(profileData); }} />
                     </div>
                 ) : (
                     <div className="space-y-6">
@@ -210,19 +216,24 @@ function InfoItem({ label, value }: { label: string; value?: string }) {
 }
 
 function SocialLink({ platform, handle }: { platform: string; handle: string }) {
-    const icons: { [key: string]: React.ReactNode } = {
-        Instagram: <Instagram className="h-4 w-4" />,
-        Facebook: <Facebook className="h-4 w-4" />,
-        LinkedIn: <Linkedin className="h-4 w-4" />,
-        "X (Twitter)": <Twitter className="h-4 w-4" />,
+    const platformStyles: { [key: string]: { icon: React.ReactNode; className: string } } = {
+        Instagram: { icon: <Instagram className="h-4 w-4" />, className: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" },
+        Facebook: { icon: <Facebook className="h-4 w-4" />, className: "bg-blue-600" },
+        LinkedIn: { icon: <Linkedin className="h-4 w-4" />, className: "bg-sky-700" },
+        "X (Twitter)": { icon: <Twitter className="h-4 w-4" />, className: "bg-neutral-900" },
     };
 
+    const style = platformStyles[platform];
+
+    if (!style) return null;
+
     return (
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            {icons[platform]}
+        <div className={cn(
+            "flex items-center gap-2 text-sm text-white rounded-md px-3 py-1.5",
+            style.className
+        )}>
+            {style.icon}
             <span>{handle}</span>
         </div>
     );
 }
-
-    
