@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'firebasestudio.corp.google.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   devIndicators: {
