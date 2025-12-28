@@ -19,12 +19,18 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  X,
   Edit,
-  Save,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
+
+// Using a custom SVG for the X logo as lucide-react's X is a close icon.
+const XLogo = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6902H306.615L611.412 515.685L658.88 583.579L1055.08 1150.31H892.476L569.165 687.828Z" fill="currentColor"/>
+    </svg>
+);
+
 
 interface ProfileData {
     instagram: string;
@@ -108,19 +114,19 @@ export function ProfilePage() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="relative">
                     <Instagram className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="instagram" placeholder="Instagram" className="pl-10 bg-transparent" value={formData.instagram} onChange={handleInputChange} />
+                    <Input id="instagram" placeholder="Instagram handle" className="pl-10 bg-transparent" value={formData.instagram} onChange={handleInputChange} />
                     </div>
                     <div className="relative">
                     <Facebook className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="facebook" placeholder="Facebook" className="pl-10 bg-transparent" value={formData.facebook} onChange={handleInputChange} />
+                    <Input id="facebook" placeholder="Facebook profile" className="pl-10 bg-transparent" value={formData.facebook} onChange={handleInputChange} />
                     </div>
                     <div className="relative">
                     <Linkedin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="linkedin" placeholder="LinkedIn" className="pl-10 bg-transparent" value={formData.linkedin} onChange={handleInputChange} />
+                    <Input id="linkedin" placeholder="LinkedIn profile" className="pl-10 bg-transparent" value={formData.linkedin} onChange={handleInputChange} />
                     </div>
                     <div className="relative">
-                    <X className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="twitter" placeholder="X (Twitter)" className="pl-10 bg-transparent" value={formData.twitter} onChange={handleInputChange} />
+                    <XLogo className="absolute left-3 top-1/2 h-3 w-3 -translate-y-1/2 text-muted-foreground" />
+                    <Input id="twitter" placeholder="X (Twitter) handle" className="pl-10 bg-transparent" value={formData.twitter} onChange={handleInputChange} />
                     </div>
                 </div>
                 </div>
@@ -220,7 +226,7 @@ function SocialLink({ platform, handle }: { platform: string; handle: string }) 
         Instagram: { icon: <Instagram className="h-4 w-4" />, className: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" },
         Facebook: { icon: <Facebook className="h-4 w-4" />, className: "bg-blue-600" },
         LinkedIn: { icon: <Linkedin className="h-4 w-4" />, className: "bg-sky-700" },
-        "X (Twitter)": { icon: <X className="h-4 w-4" />, className: "bg-black" },
+        "X (Twitter)": { icon: <XLogo className="h-3 w-3" />, className: "bg-black" },
     };
 
     const style = platformStyles[platform];
