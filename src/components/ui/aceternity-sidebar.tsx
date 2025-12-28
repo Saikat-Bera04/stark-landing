@@ -41,14 +41,14 @@ const links: SidebarLink[] = [
     icon: <MessageSquare className="h-5 w-5 shrink-0" />,
   },
   {
-    label: 'Memories',
-    href: '/dashboard?view=memories',
-    icon: <ScrollText className="h-5 w-5 shrink-0" />,
-  },
-  {
     label: 'Invite Participant',
     href: '/dashboard?view=invite',
     icon: <UserPlus className="h-5 w-5 shrink-0" />,
+  },
+  {
+    label: 'Memories',
+    href: '/dashboard?view=memories',
+    icon: <ScrollText className="h-5 w-5 shrink-0" />,
   },
 ];
 
