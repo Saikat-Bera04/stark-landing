@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from '@/lib/utils';
 
 const colors = [
   { name: 'Default', value: 'hsl(0 0% 98%)' },
@@ -20,13 +21,16 @@ const colors = [
   { name: 'Rose', value: 'hsl(346 84% 61%)' },
 ];
 
-export function ColorSwitcher() {
+export function ColorSwitcher({ inSidebar = false }: { inSidebar?: boolean}) {
   const { setDynamicTextColor } = useTheme();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-secondary border-none">
+        <Button variant="ghost" size="icon" className={cn(
+          "hover:bg-secondary border-none",
+          inSidebar && "text-neutral-200 hover:bg-neutral-700 hover:text-white"
+          )}>
           <Palette className="h-5 w-5 text-primary" />
           <span className="sr-only">Change Color Theme</span>
         </Button>

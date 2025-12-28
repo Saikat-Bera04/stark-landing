@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, 'useState, useEffect} from 'react';
 import {
   ArrowLeft,
   Bot,
@@ -18,6 +18,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { Logo } from '../shared/Logo';
 import { Avatar, AvatarFallback, AvatarImage } from './avatar';
 import Image from 'next/image';
+import { ColorSwitcher } from '../theme/ColorSwitcher';
 
 interface SidebarLink {
   label: string;
@@ -66,7 +67,10 @@ export function SidebarDemo() {
             ))}
           </div>
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center justify-center">
+            <ColorSwitcher />
+          </div>
           <SidebarLink
             link={{
               label: 'Profile',
