@@ -6,22 +6,22 @@ import type { SecurityStatus as SecurityStatusType } from '@/types/dashboard';
 
 const statuses: SecurityStatusType[] = [
     {
-      title: "Core System",
-      value: "Online",
-      status: "Operational",
+      title: "GUARD BOTS",
+      value: "124/124",
+      status: "[RUNNING...]",
       variant: "success",
     },
     {
-      title: "Memory DB",
-      value: "Syncing",
-      status: "Indexing new data",
+      title: "FIREWALL",
+      value: "99.9%",
+      status: "[BLOCKED]",
+      variant: "success",
+    },
+    {
+      title: "HTML WARNINGS",
+      value: "12042",
+      status: "[ACCESSIBILITY]",
       variant: "warning",
-    },
-    {
-      title: "Firewall",
-      value: "Active",
-      status: "No threats detected",
-      variant: "success",
     },
 ];
 
