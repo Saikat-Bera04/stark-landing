@@ -89,7 +89,7 @@ export default function SecurityStatus({ statuses }: SecurityStatusProps) {
             className="size-full object-contain"
             data-ai-hint={securityBotImage.imageHint}
           />
-        </picture>
+        </div>
       </div>
     </DashboardCard>
   );
