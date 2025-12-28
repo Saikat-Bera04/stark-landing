@@ -6,6 +6,7 @@ import {
   ScrollText,
   UserPlus,
   Settings,
+  ShieldCheck,
 } from "lucide-react";
 
 import {
@@ -67,6 +68,14 @@ export default function DashboardLayout({
                 <Link href="/dashboard?view=memories">
                   <ScrollText />
                   <span>Memories</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+             <SidebarMenuItem>
+              <SidebarMenuButton asChild tooltip="Security">
+                <Link href="/dashboard?view=security">
+                  <ShieldCheck />
+                  <span>Security</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
