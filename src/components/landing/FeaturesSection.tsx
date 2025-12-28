@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { MessageSquare, BookUser, KeyRound } from "lucide-react";
+import { MessageSquare, KeyRound } from "lucide-react";
 import { ColorChangingDots } from "@/components/shared/ColorChangingDots";
 
 const features = [
@@ -9,7 +9,7 @@ const features = [
     description: "Your avatar learns and evolves from every text and voice interaction, growing more personalized over time.",
   },
   {
-    icon: <BookUser className="h-8 w-8 text-primary" />,
+    icon: <ColorChangingDots />,
     title: "Structured Memory",
     description: "Opinions, preferences, and behaviors are stored as structured memories, enabling complex and consistent personality traits.",
   },
