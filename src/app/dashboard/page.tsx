@@ -8,6 +8,7 @@ import { MemoryList } from "@/components/dashboard/MemoryList";
 import { InviteParticipant } from "@/components/dashboard/InviteParticipant";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BrainCircuit } from "lucide-react";
+import { ProfilePage } from '@/components/dashboard/ProfilePage';
 
 
 function WelcomeDashboard() {
@@ -40,6 +41,8 @@ function DashboardPageContent() {
         return <MemoryList />;
       case "invite":
         return <InviteParticipant />;
+      case "profile":
+        return <ProfilePage />;
       default:
         return <WelcomeDashboard />;
     }

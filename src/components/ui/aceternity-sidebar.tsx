@@ -7,6 +7,7 @@ import {
   Home,
   MessageSquare,
   ScrollText,
+  User,
   UserPlus,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -67,7 +68,15 @@ export function SidebarDemo() {
         <div>
           <SidebarLink
             link={{
-              label: 'User',
+              label: 'Profile',
+              href: '/dashboard?view=profile',
+              icon: <User className="h-5 w-5 shrink-0" />,
+            }}
+            open={open}
+          />
+           <SidebarLink
+            link={{
+              label: 'Sign Out',
               href: '/signin',
               icon: (
                 <Avatar className="h-7 w-7 shrink-0">
@@ -114,7 +123,7 @@ export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       className={cn(
-        'relative z-50 flex h-full flex-col justify-between border-r border-neutral-200 bg-gray-100 p-5 dark:border-neutral-700 dark:bg-neutral-800'
+        'relative z-50 flex h-full flex-col justify-between border-r border-neutral-700 bg-neutral-800 p-5'
       )}
     >
       {children}
@@ -142,7 +151,7 @@ export const SidebarLink = ({ link, open }: { link: SidebarLink, open: boolean }
         const linkView = new URLSearchParams(link.href.split('?')[1]).get('view');
         setIsActive(view === linkView);
     } else {
-         // For the main dashboard link
+         // For the main dashboard link and other top-level links like /signin
         setIsActive(pathname === link.href && !searchParams.get('view'));
     }
   }, [pathname, searchParams, link.href]);
@@ -152,16 +161,16 @@ export const SidebarLink = ({ link, open }: { link: SidebarLink, open: boolean }
     <Link
       href={link.href}
       className={cn(
-        'group/link flex items-center justify-start gap-2 rounded-md px-2 py-2 text-sm text-neutral-700 hover:bg-black/5 dark:text-neutral-200 dark:hover:bg-neutral-700',
+        'group/link flex items-center justify-start gap-2 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-neutral-700',
         isActive &&
-          'bg-black/10 font-medium text-black dark:bg-neutral-700 dark:text-white'
+          'bg-neutral-700 font-medium text-white'
       )}
     >
       {React.cloneElement(link.icon as React.ReactElement, {
         className: cn(
           (link.icon as React.ReactElement).props.className,
-          'text-neutral-700 dark:text-neutral-200',
-          isActive && 'text-black dark:text-white'
+          'text-neutral-200',
+          isActive && 'text-white'
         ),
       })}
 
@@ -172,7 +181,7 @@ export const SidebarLink = ({ link, open }: { link: SidebarLink, open: boolean }
             animate={{ opacity: 1, width: 'auto' }}
             exit={{ opacity: 0, width: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="font-medium whitespace-pre text-black dark:text-white overflow-hidden"
+            className="font-medium whitespace-pre text-white overflow-hidden"
           >
             {link.label}
           </motion.span>
