@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 // Using a custom SVG for the X logo as lucide-react's X is a close icon.
 const XLogo = (props: React.SVGProps<SVGSVGElement>) => (
@@ -114,15 +115,15 @@ export function ProfilePage() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="relative">
                     <Instagram className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="instagram" placeholder="Instagram handle" className="pl-10 bg-transparent" value={formData.instagram} onChange={handleInputChange} />
+                    <Input id="instagram" placeholder="Instagram username" className="pl-10 bg-transparent" value={formData.instagram} onChange={handleInputChange} />
                     </div>
                     <div className="relative">
                     <Facebook className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="facebook" placeholder="Facebook profile" className="pl-10 bg-transparent" value={formData.facebook} onChange={handleInputChange} />
+                    <Input id="facebook" placeholder="Facebook profile URL" className="pl-10 bg-transparent" value={formData.facebook} onChange={handleInputChange} />
                     </div>
                     <div className="relative">
                     <Linkedin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="linkedin" placeholder="LinkedIn profile" className="pl-10 bg-transparent" value={formData.linkedin} onChange={handleInputChange} />
+                    <Input id="linkedin" placeholder="LinkedIn profile URL" className="pl-10 bg-transparent" value={formData.linkedin} onChange={handleInputChange} />
                     </div>
                     <div className="relative">
                     <XLogo className="absolute left-3 top-1/2 h-3 w-3 -translate-y-1/2 text-muted-foreground" />
@@ -222,24 +223,37 @@ function InfoItem({ label, value }: { label: string; value?: string }) {
 }
 
 function SocialLink({ platform, handle }: { platform: string; handle: string }) {
-    const platformStyles: { [key: string]: { icon: React.ReactNode; className: string } } = {
-        Instagram: { icon: <Instagram className="h-4 w-4" />, className: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" },
-        Facebook: { icon: <Facebook className="h-4 w-4" />, className: "bg-blue-600" },
-        LinkedIn: { icon: <Linkedin className="h-4 w-4" />, className: "bg-sky-700" },
-        "X (Twitter)": { icon: <XLogo className="h-3 w-3" />, className: "bg-black" },
+    const platformStyles: { [key: string]: { icon: React.ReactNode; className: string, url: (handle: string) => string } } = {
+        Instagram: { icon: <Instagram className="h-4 w-4" />, className: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500", url: (handle) => `https://instagram.com/${handle}` },
+        Facebook: { icon: <Facebook className="h-4 w-4" />, className: "bg-blue-600", url: (handle) => handle },
+        LinkedIn: { icon: <Linkedin className="h-4 w-4" />, className: "bg-sky-700", url: (handle) => handle },
+        "X (Twitter)": { icon: <XLogo className="h-3 w-3" />, className: "bg-black", url: (handle) => `https://x.com/${handle}` },
     };
 
     const style = platformStyles[platform];
 
     if (!style) return null;
 
+    let displayHandle = handle;
+    if (platform === 'Instagram' || platform === 'X (Twitter)') {
+        displayHandle = handle;
+    } else if (handle.startsWith('http')) {
+        try {
+            const url = new URL(handle);
+            displayHandle = url.pathname.split('/').filter(Boolean).pop() || handle;
+        } catch (e) {
+            // fallback to handle if URL is malformed
+        }
+    }
+
+
     return (
-        <div className={cn(
-            "flex items-center gap-2 text-sm text-white rounded-md px-3 py-1.5",
+        <a href={style.url(handle)} target="_blank" rel="noopener noreferrer" className={cn(
+            "flex items-center gap-2 text-sm text-white rounded-md px-3 py-1.5 transition-transform hover:scale-105",
             style.className
         )}>
             {style.icon}
-            <span>{handle}</span>
-        </div>
+            <span>{displayHandle}</span>
+        </a>
     );
 }
