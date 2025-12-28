@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   ArrowLeft,
-  BrainCircuit,
+  Bot,
   Home,
   MessageSquare,
   ScrollText,
@@ -30,7 +30,7 @@ const links: SidebarLink[] = [
   {
     label: 'Train Avatar',
     href: '/dashboard?view=training',
-    icon: <BrainCircuit className="h-5 w-5 shrink-0" />,
+    icon: <Bot className="h-5 w-5 shrink-0" />,
   },
   {
     label: 'Chat',
