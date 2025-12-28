@@ -223,32 +223,31 @@ function InfoItem({ label, value }: { label: string; value?: string }) {
 }
 
 function SocialLink({ platform, handle }: { platform: string; handle: string }) {
-    const platformStyles: { [key: string]: { icon: React.ReactNode; className: string, url: (handle: string) => string } } = {
-        Instagram: { icon: <Instagram className="h-4 w-4" />, className: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500", url: (handle) => `https://instagram.com/${handle}` },
-        Facebook: { icon: <Facebook className="h-4 w-4" />, className: "bg-blue-600", url: (handle) => handle },
-        LinkedIn: { icon: <Linkedin className="h-4 w-4" />, className: "bg-sky-700", url: (handle) => handle },
-        "X (Twitter)": { icon: <XLogo className="h-3 w-3" />, className: "bg-black", url: (handle) => `https://x.com/${handle}` },
+    const platformStyles: { [key: string]: { icon: React.ReactNode; className: string, getUrl: (handle: string) => string } } = {
+        Instagram: { icon: <Instagram className="h-4 w-4" />, className: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500", getUrl: (h) => `https://instagram.com/${h.replace(/^@/, '')}` },
+        Facebook: { icon: <Facebook className="h-4 w-4" />, className: "bg-blue-600", getUrl: (h) => h.startsWith('http') ? h : `https://facebook.com/${h}` },
+        LinkedIn: { icon: <Linkedin className="h-4 w-4" />, className: "bg-sky-700", getUrl: (h) => h.startsWith('http') ? h : `https://linkedin.com/in/${h}` },
+        "X (Twitter)": { icon: <XLogo className="h-3 w-3" />, className: "bg-black", getUrl: (h) => `https://x.com/${h.replace(/^@/, '')}` },
     };
 
     const style = platformStyles[platform];
 
-    if (!style) return null;
-
+    if (!style || !handle) return null;
+    
     let displayHandle = handle;
-    if (platform === 'Instagram' || platform === 'X (Twitter)') {
-        displayHandle = handle;
-    } else if (handle.startsWith('http')) {
-        try {
+    try {
+        if (handle.startsWith('http')) {
             const url = new URL(handle);
             displayHandle = url.pathname.split('/').filter(Boolean).pop() || handle;
-        } catch (e) {
-            // fallback to handle if URL is malformed
         }
+    } catch (e) {
+        // if URL is malformed, use handle as is
     }
+    displayHandle = displayHandle.replace(/^@/, '');
 
 
     return (
-        <a href={style.url(handle)} target="_blank" rel="noopener noreferrer" className={cn(
+        <a href={style.getUrl(handle)} target="_blank" rel="noopener noreferrer" className={cn(
             "flex items-center gap-2 text-sm text-white rounded-md px-3 py-1.5 transition-transform hover:scale-105",
             style.className
         )}>
