@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   Bot,
   BrainCircuit,
+  FileText,
   Home,
   MessageSquare,
   ScrollText,
@@ -46,9 +47,9 @@ const links: SidebarLink[] = [
     icon: <UserPlus className="h-5 w-5 shrink-0" />,
   },
   {
-    label: 'Memories',
-    href: '/dashboard?view=memories',
-    icon: <ScrollText className="h-5 w-5 shrink-0" />,
+    label: 'Docs',
+    href: '/dashboard?view=docs',
+    icon: <FileText className="h-5 w-5 shrink-0" />,
   },
 ];
 

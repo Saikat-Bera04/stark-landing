@@ -4,7 +4,7 @@ import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AvatarTraining } from "@/components/dashboard/AvatarTraining";
 import { ChatInterface } from "@/components/dashboard/ChatInterface";
-import { MemoryList } from "@/components/dashboard/MemoryList";
+import { DocsPage } from "@/components/dashboard/DocsPage";
 import { InviteParticipant } from "@/components/dashboard/InviteParticipant";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BrainCircuit } from "lucide-react";
@@ -37,8 +37,8 @@ function DashboardPageContent() {
         return <AvatarTraining />;
       case "chat":
         return <ChatInterface />;
-      case "memories":
-        return <MemoryList />;
+      case "docs":
+        return <DocsPage />;
       case "invite":
         return <InviteParticipant />;
       case "profile":
