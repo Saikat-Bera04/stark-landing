@@ -221,4 +221,8 @@ body {
     animation: color-change 4s ease-in-out infinite;
     animation-delay: 0.66s;
   }
+  .animate-color-change-4 {
+    animation: color-change 4s ease-in-out infinite;
+    animation-delay: 0.99s;
+  }
 }
