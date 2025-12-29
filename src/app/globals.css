@@ -199,7 +199,7 @@ body {
     top: 0;
     pointer-events: none;
     border-radius: 9999px;
-    background-color: hsl(var(--primary) / 0.15);
+    background-color: hsl(var(--accent) / 0.15);
     filter: blur(120px);
     z-index: 9999;
     transition: transform 0.2s ease-out, width 0.3s ease-out, height 0.3s ease-out;
