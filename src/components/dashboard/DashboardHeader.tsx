@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Home, Bot, MessageSquare, ScrollText, UserPlus, User, FileText } from "lucide-react";
+import { Home, Bot, MessageSquare, ScrollText, UserPlus, User, FileText, Sparkles } from "lucide-react";
 import { ColorSwitcher } from "../theme/ColorSwitcher";
 
 const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
@@ -10,7 +10,7 @@ const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
   training: { title: "Train Avatar", icon: <Bot className="h-5 w-5" /> },
   chat: { title: "Chat", icon: <MessageSquare className="h-5 w-5" /> },
   docs: { title: "Documentation", icon: <FileText className="h-5 w-5" /> },
-  invite: { title: "Invite Participant", icon: <UserPlus className="h-5 w-5" /> },
+  "create-avatar": { title: "Create Avatar", icon: <Sparkles className="h-5 w-5" /> },
   profile: { title: "User Profile", icon: <User className="h-5 w-5" /> },
 };
 
@@ -27,7 +27,7 @@ export function DashboardHeader() {
   }, [searchParams]);
 
   return (
-    <header className="flex h-12 items-center justify-between bg-neutral-800 px-4 md:px-6">
+    <header className="flex h-12 items-center justify-between bg-neutral-900/50 backdrop-blur-sm px-4 md:px-6">
       <div className="flex items-center gap-3">
         <div className="text-primary">{currentView.icon}</div>
         <h1 className="text-md font-semibold text-foreground">
@@ -35,7 +35,7 @@ export function DashboardHeader() {
         </h1>
       </div>
       <div className="flex items-center">
-        <ColorSwitcher />
+        {/* The ColorSwitcher was here, now it's in the sidebar */}
       </div>
     </header>
   );

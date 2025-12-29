@@ -5,9 +5,9 @@ import { useSearchParams } from 'next/navigation';
 import { AvatarTraining } from "@/components/dashboard/AvatarTraining";
 import { ChatInterface } from "@/components/dashboard/ChatInterface";
 import { DocsPage } from "@/components/dashboard/DocsPage";
-import { InviteParticipant } from "@/components/dashboard/InviteParticipant";
 import { ProfilePage } from '@/components/dashboard/ProfilePage';
 import { WelcomeDashboard } from './WelcomeDashboard';
+import { CreateAvatarPage } from './CreateAvatar';
 
 export function DashboardPageContent() {
   const searchParams = useSearchParams();
@@ -21,8 +21,8 @@ export function DashboardPageContent() {
         return <ChatInterface />;
       case "docs":
         return <DocsPage />;
-      case "invite":
-        return <InviteParticipant />;
+      case "create-avatar":
+        return <CreateAvatarPage />;
       case "profile":
         return <ProfilePage />;
       default:

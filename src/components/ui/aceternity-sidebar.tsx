@@ -10,6 +10,8 @@ import {
   ScrollText,
   User,
   UserPlus,
+  Palette,
+  Sparkles,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -43,9 +45,9 @@ const links: SidebarLink[] = [
     icon: <MessageSquare className="h-5 w-5 shrink-0" />,
   },
   {
-    label: 'Invite Participant',
-    href: '/dashboard?view=invite',
-    icon: <UserPlus className="h-5 w-5 shrink-0" />,
+    label: 'Create Avatar',
+    href: '/dashboard?view=create-avatar',
+    icon: <Sparkles className="h-5 w-5 shrink-0" />,
   },
   {
     label: 'Docs',
@@ -68,6 +70,9 @@ export function SidebarDemo() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
+           <div className="flex items-center justify-center">
+            {open && <ColorSwitcher inSidebar />}
+          </div>
           <SidebarLink
             link={{
               label: 'Profile',
@@ -125,7 +130,7 @@ export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       className={cn(
-        'relative z-50 flex h-full flex-col justify-between bg-neutral-800 p-5'
+        'relative z-50 flex h-full flex-col justify-between bg-neutral-900 p-5'
       )}
     >
       {children}
@@ -147,16 +152,21 @@ export const SidebarLink = ({ link, open }: { link: SidebarLink, open: boolean }
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    // For dashboard, we check the 'view' param
-    if (link.href.includes('?view=')) {
-        const view = searchParams.get('view');
-        const linkView = new URLSearchParams(link.href.split('?')[1]).get('view');
-        setIsActive(view === linkView);
-    } else {
-         // For the main dashboard link and other top-level links like /signin
-        setIsActive(pathname === link.href && !searchParams.get('view'));
+    const currentView = searchParams.get('view');
+    // Default dashboard view
+    if (link.href === '/dashboard' && !currentView) {
+        setIsActive(true);
+        return;
     }
-  }, [pathname, searchParams, link.href]);
+    // For other views
+    if (link.href.includes('?view=')) {
+        const linkView = new URLSearchParams(link.href.split('?')[1]).get('view');
+        setIsActive(currentView === linkView);
+    } else {
+        // For top-level links like /signin
+        setIsActive(pathname === link.href && !link.href.includes('?'));
+    }
+}, [pathname, searchParams, link.href]);
 
 
   return (
