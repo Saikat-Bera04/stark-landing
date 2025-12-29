@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from 'react';
@@ -28,12 +29,8 @@ export function ChatInterface() {
   };
 
   return (
-    <Card className="flex flex-col h-[calc(100vh-10rem)] card-glass">
-        <CardHeader>
-            <CardTitle className="font-headline" style={{color: 'var(--dynamic-text-color)'}}>Chat with your EvoAvatar</CardTitle>
-            <CardDescription>Have a conversation and see how its personality unfolds.</CardDescription>
-        </CardHeader>
-      <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
+    <div className="flex flex-col h-full bg-transparent">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg, index) => (
           <div key={index} className={`flex items-start gap-3 ${msg.from === 'user' ? 'justify-end' : ''}`}>
             {msg.from === 'avatar' && (
@@ -52,7 +49,7 @@ export function ChatInterface() {
             )}
           </div>
         ))}
-      </CardContent>
+      </div>
       <div className="p-4 border-t border-border/30">
         <div className="relative flex items-center gap-2">
           <Input
@@ -65,6 +62,6 @@ export function ChatInterface() {
           <GlowingButton text="Send" onClick={handleSend} />
         </div>
       </div>
-    </Card>
+    </div>
   );
 }
