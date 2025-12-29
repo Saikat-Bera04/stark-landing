@@ -49,11 +49,6 @@ const links: SidebarLink[] = [
     href: '/dashboard?view=create-avatar',
     icon: <Sparkles className="h-5 w-5 shrink-0" />,
   },
-   {
-    label: 'Invite Participant',
-    href: '/dashboard?view=invite',
-    icon: <UserPlus className="h-5 w-5 shrink-0" />,
-  },
   {
     label: 'Docs',
     href: '/dashboard?view=docs',
