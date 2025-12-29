@@ -3,6 +3,7 @@ import { SidebarDemo } from '@/components/ui/aceternity-sidebar';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import React from 'react';
 import Image from 'next/image';
+import { FloatingDots } from '@/components/dashboard/FloatingDots';
 
 export default function DashboardLayout({
   children,
@@ -20,6 +21,7 @@ export default function DashboardLayout({
           unoptimized
         />
         <div className="absolute inset-0 bg-black/50" />
+        <FloatingDots />
       </div>
       <div className="relative z-10 flex h-full w-full">
         <SidebarDemo />
