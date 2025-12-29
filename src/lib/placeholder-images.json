@@ -77,6 +77,106 @@
       "description": "Abstract image for security bot",
       "imageUrl": "https://firebasestudio.corp.google.com/static/images/bot_greenprint.gif",
       "imageHint": "wireframe robot"
+    },
+    {
+      "id": "avatar-1",
+      "imageUrl": "https://images.unsplash.com/photo-1625314887424-9f190599bd56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyb2JvdHxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "robot"
+    },
+    {
+      "id": "avatar-2",
+      "imageUrl": "https://images.unsplash.com/photo-1494022299300-899b96e49893?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhc3Ryb25hdXR8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "astronaut"
+    },
+    {
+      "id": "avatar-3",
+      "imageUrl": "https://images.unsplash.com/photo-1557040135-9dc2a6b60411?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjeWJvcmd8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cyborg"
+    },
+    {
+      "id": "avatar-4",
+      "imageUrl": "https://images.unsplash.com/photo-1640903581708-8d491706515b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxuaW5qYXxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ninja"
+    },
+    {
+      "id": "avatar-5",
+      "imageUrl": "https://images.unsplash.com/photo-1618426257457-0bc6cfa2de33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3aXphcmR8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wizard"
+    },
+    {
+      "id": "avatar-6",
+      "imageUrl": "https://images.unsplash.com/photo-1682686581264-c47e25e61d95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxleHBsb3JlcnxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "explorer"
+    },
+    {
+      "id": "avatar-7",
+      "imageUrl": "https://images.unsplash.com/photo-1597211684565-dca64d72bdfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxnb2xlbXxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "golem"
+    },
+    {
+      "id": "avatar-8",
+      "imageUrl": "https://images.unsplash.com/photo-1512149673953-1e251807ec7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhbmRyb2lkfGVufDB8fHx8MTc2Njk4MDI0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "android"
+    },
+    {
+      "id": "avatar-9",
+      "imageUrl": "https://images.unsplash.com/photo-1666615435088-4865bf5ed3fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoYWNrZXJ8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hacker"
+    },
+    {
+      "id": "avatar-10",
+      "imageUrl": "https://images.unsplash.com/photo-1530469353049-18df0403f42b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwaWxvdHxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pilot"
+    },
+    {
+      "id": "avatar-11",
+      "imageUrl": "https://images.unsplash.com/photo-1560684033-2a9ff3d2a03e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkZXRlY3RpdmV8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "detective"
+    },
+    {
+      "id": "avatar-12",
+      "imageUrl": "https://images.unsplash.com/photo-1631556759511-6ce895fbf0ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzY2llbnRpc3R8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "scientist"
+    },
+    {
+      "id": "avatar-13",
+      "imageUrl": "https://images.unsplash.com/photo-1551180452-aea351b23949?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhcnRpc3R8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "artist"
+    },
+    {
+      "id": "avatar-14",
+      "imageUrl": "https://images.unsplash.com/photo-1619961602105-16fa2a5465c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtdXNpY2lhbnxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "musician"
+    },
+    {
+      "id": "avatar-15",
+      "imageUrl": "https://images.unsplash.com/photo-1510442650500-93217e634e4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d3JpdGVyfGVufDB8fHx8MTc2Njk4MDI0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "writer"
+    },
+    {
+      "id": "avatar-16",
+      "imageUrl": "https://images.unsplash.com/photo-1600081728723-c8aa2ee3236a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxrbmlnaHR8ZW58MHx8fHwxNzY2OTgwMjQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "knight"
+    },
+    {
+      "id": "avatar-17",
+      "imageUrl": "https://images.unsplash.com/photo-1658330821556-d1b6f124c7fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYWdlfGVufDB8fHx8MTc2Njk4MDI0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mage"
+    },
+    {
+      "id": "avatar-18",
+      "imageUrl": "https://images.unsplash.com/photo-1669269816453-784a6d3f15ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxyb2d1ZXxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rogue"
+    },
+    {
+      "id": "avatar-19",
+      "imageUrl": "https://images.unsplash.com/photo-1579722176915-95d4ee62565e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2FwdGFpbnxlbnwwfHx8fDE3NjY5ODAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "captain"
+    },
+    {
+      "id": "avatar-20",
+      "imageUrl": "https://images.unsplash.com/photo-1640823127518-65e1ad563576?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjeWJlcnNwYWNlfGVufDB8fHx8MTc2Njk4MDI0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cyberspace"
     }
   ]
 }

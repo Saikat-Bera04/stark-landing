@@ -8,6 +8,7 @@ import { DocsPage } from "@/components/dashboard/DocsPage";
 import { ProfilePage } from '@/components/dashboard/ProfilePage';
 import { WelcomeDashboard } from './WelcomeDashboard';
 import { CreateAvatarPage } from './CreateAvatar';
+import { InviteParticipantPage } from './InviteParticipant';
 
 export function DashboardPageContent() {
   const searchParams = useSearchParams();
@@ -25,6 +26,8 @@ export function DashboardPageContent() {
         return <CreateAvatarPage />;
       case "profile":
         return <ProfilePage />;
+      case "invite":
+        return <InviteParticipantPage />;
       default:
         return <WelcomeDashboard />;
     }

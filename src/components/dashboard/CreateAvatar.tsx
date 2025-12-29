@@ -14,80 +14,147 @@ import { Label } from "@/components/ui/label";
 import { useToast } from '@/hooks/use-toast';
 import { GlowingButton } from '../ui/glowing-button';
 import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
+import { Textarea } from '../ui/textarea';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const avatars = PlaceHolderImages.filter(p => p.id.startsWith('avatar-'));
+
+const questions = [
+    { id: 'q1', label: 'What is your avatar\'s primary function or purpose?', placeholder: 'e.g., A helpful assistant, a creative partner, a guardian...' },
+    { id: 'q2', label: 'Describe your avatar\'s personality in three words.', placeholder: 'e.g., Curious, witty, and loyal' },
+    { id: 'q3', label: 'What is a core value or principle your avatar follows?', placeholder: 'e.g., Always seek the truth, protect its user at all costs...' },
+];
 
 export function CreateAvatarPage() {
-  const [prompt, setPrompt] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('');
-  const { toast } = useToast();
+    const [step, setStep] = useState(1);
+    const [avatarName, setAvatarName] = useState('');
+    const [selectedAvatar, setSelectedAvatar] = useState('');
+    const [answers, setAnswers] = useState({ q1: '', q2: '', q3: '' });
+    const { toast } = useToast();
 
-  const handleGenerate = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!prompt) {
+    const handleNext = () => setStep(prev => prev + 1);
+    const handleBack = () => setStep(prev => prev - 1);
+
+    const handleGenerateCode = () => {
+        if (!avatarName || !selectedAvatar || Object.values(answers).some(a => !a)) {
+            toast({
+                title: "Incomplete Form",
+                description: "Please fill out all fields before generating.",
+                variant: "destructive",
+            });
+            return;
+        }
+
         toast({
-            title: "Prompt is empty",
-            description: "Please describe the avatar you want to create.",
-            variant: "destructive",
+            title: "Generating Code...",
+            description: "Your avatar configuration is being created.",
         });
-        return;
+
+        // Placeholder for generation logic
+        setTimeout(() => {
+            const generatedCode = `AVATAR_CONFIG::${btoa(JSON.stringify({ avatarName, selectedAvatar, answers }))}`;
+            setStep(4); // Move to the code display step
+            // In a real scenario, you might want to display this code to the user
+            console.log(generatedCode);
+             toast({
+                title: "Avatar Generated!",
+                description: "Your new avatar configuration is ready.",
+            });
+        }, 1500);
     };
 
-    // Mock generation
-    toast({
-        title: "Generating Avatar...",
-        description: `Creating an avatar based on: "${prompt}"`,
-    });
-    
-    // Placeholder image
-    setTimeout(() => {
-        setAvatarUrl(`https://picsum.photos/seed/${prompt.replace(/\s/g, '-')}/512/512`);
-        toast({
-            title: "Avatar Generated!",
-            description: "Your new avatar is ready.",
-        });
-    }, 2000);
-  };
+    const renderStep = () => {
+        switch (step) {
+            case 1:
+                return (
+                    <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
+                        <CardHeader>
+                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 1: Name Your Avatar</CardTitle>
+                            <CardDescription>Every great creation needs a name. What will you call yours?</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Label htmlFor="avatarName">Avatar Name</Label>
+                            <Input id="avatarName" value={avatarName} onChange={(e) => setAvatarName(e.target.value)} placeholder="e.g., Neo, Aura, K.A.I." className="bg-transparent" />
+                        </CardContent>
+                        <CardFooter className="justify-end">
+                            <GlowingButton text="Next" onClick={handleNext} disabled={!avatarName} />
+                        </CardFooter>
+                    </motion.div>
+                );
+            case 2:
+                return (
+                    <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
+                        <CardHeader>
+                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 2: Choose an Appearance</CardTitle>
+                            <CardDescription>Select a base visual form for your avatar.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="max-h-[50vh] overflow-y-auto">
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                                {avatars.map(avatar => (
+                                    <button
+                                        key={avatar.id}
+                                        onClick={() => setSelectedAvatar(avatar.imageUrl)}
+                                        className={cn("relative aspect-square w-full rounded-lg overflow-hidden border-2 transition-all",
+                                            selectedAvatar === avatar.imageUrl ? 'border-primary ring-2 ring-primary/50' : 'border-border/50 hover:border-primary'
+                                        )}
+                                    >
+                                        <Image src={avatar.imageUrl} alt={avatar.imageHint} fill className="object-cover" data-ai-hint={avatar.imageHint} />
+                                         {selectedAvatar === avatar.imageUrl && <div className="absolute inset-0 bg-primary/50" />}
+                                    </button>
+                                ))}
+                            </div>
+                        </CardContent>
+                        <CardFooter className="justify-between">
+                            <Button variant="ghost" onClick={handleBack}>Back</Button>
+                            <GlowingButton text="Next" onClick={handleNext} disabled={!selectedAvatar} />
+                        </CardFooter>
+                    </motion.div>
+                );
+            case 3:
+                return (
+                    <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
+                        <CardHeader>
+                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 3: Define its Personality</CardTitle>
+                            <CardDescription>Answer these questions to shape its core characteristics.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            {questions.map(q => (
+                                <div key={q.id} className="grid w-full items-center gap-1.5">
+                                    <Label htmlFor={q.id}>{q.label}</Label>
+                                    <Textarea id={q.id} value={answers[q.id as keyof typeof answers]} onChange={(e) => setAnswers({...answers, [q.id]: e.target.value})} placeholder={q.placeholder} className="bg-transparent" />
+                                </div>
+                            ))}
+                        </CardContent>
+                        <CardFooter className="justify-between">
+                            <Button variant="ghost" onClick={handleBack}>Back</Button>
+                            <GlowingButton text="Generate Avatar" onClick={handleGenerateCode} />
+                        </CardFooter>
+                    </motion.div>
+                );
+            case 4:
+                return (
+                     <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center p-8">
+                        <CardTitle className="text-2xl font-headline mb-4" style={{color: 'var(--dynamic-text-color)'}}>Congratulations!</CardTitle>
+                        <CardDescription className="mb-6">Your avatar, {avatarName}, has been created.</CardDescription>
+                        <div className="relative aspect-square max-w-xs mx-auto rounded-lg overflow-hidden border-2 border-primary shadow-2xl shadow-primary/20 mb-8">
+                           {selectedAvatar && <Image src={selectedAvatar} alt="Final Avatar" fill className="object-cover" />}
+                        </div>
+                        <GlowingButton text="Start Over" onClick={() => setStep(1)} />
+                    </motion.div>
+                );
+        }
+    };
 
-  return (
-    <div className="grid md:grid-cols-2 gap-6">
-        <Card className="card-glass">
-            <CardHeader>
-                <CardTitle className="font-headline" style={{color: 'var(--dynamic-text-color)'}}>Create Your Avatar's Look</CardTitle>
-                <CardDescription>
-                Describe the visual appearance of your EvoAvatar. Be as detailed or as simple as you like.
-                </CardDescription>
-            </CardHeader>
-            <form onSubmit={handleGenerate}>
-                <CardContent>
-                <div className="grid w-full items-center gap-1.5">
-                    <Label htmlFor="prompt">Avatar Description</Label>
-                    <Input 
-                    type="text" 
-                    id="prompt" 
-                    placeholder="e.g., A futuristic robot with glowing blue eyes" 
-                    value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                    className="bg-transparent"
-                    />
-                </div>
-                </CardContent>
-                <CardFooter>
-                <GlowingButton type="submit" text="Generate Avatar" />
-                </CardFooter>
-            </form>
+    return (
+        <Card className="card-glass w-full max-w-3xl mx-auto">
+            <AnimatePresence mode="wait">
+                <motion.div key={step}>
+                    {renderStep()}
+                </motion.div>
+            </AnimatePresence>
         </Card>
-        <Card className="card-glass flex items-center justify-center">
-            <CardContent className="p-6">
-                {avatarUrl ? (
-                    <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden border-2 border-primary shadow-2xl shadow-primary/20">
-                        <Image src={avatarUrl} alt="Generated Avatar" fill className="object-cover" />
-                    </div>
-                ) : (
-                    <div className="w-64 h-64 md:w-80 md:h-80 rounded-lg bg-secondary/20 flex items-center justify-center text-muted-foreground text-center p-4">
-                        Your generated avatar will appear here.
-                    </div>
-                )}
-            </CardContent>
-        </Card>
-    </div>
-  );
+    );
 }
