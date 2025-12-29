@@ -13,7 +13,7 @@ export default function DashboardLayout({
     <div className="h-screen w-full">
       <div className="fixed inset-0 z-0">
         <Image
-          src="https://i.pinimg.com/originals/3b/70/46/3b70462c1f10b9ec7be8698df997111d.gif"
+          src="https://i.pinimg.com/originals/29/c7/c9/29c7c98a6be6f7401416d3653cb68907.gif"
           alt="Dashboard background"
           fill
           className="object-cover"
