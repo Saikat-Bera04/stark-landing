@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { GlowingButton } from "../ui/glowing-button";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
