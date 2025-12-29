@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -11,6 +12,7 @@ const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
   chat: { title: "Chat", icon: <MessageSquare className="h-5 w-5" /> },
   docs: { title: "Documentation", icon: <FileText className="h-5 w-5" /> },
   "create-avatar": { title: "Create Avatar", icon: <Sparkles className="h-5 w-5" /> },
+  "invite": { title: "Invite Participant", icon: <UserPlus className="h-5 w-5" /> },
   profile: { title: "User Profile", icon: <User className="h-5 w-5" /> },
 };
 
@@ -40,3 +42,5 @@ export function DashboardHeader() {
     </header>
   );
 }
+
+    

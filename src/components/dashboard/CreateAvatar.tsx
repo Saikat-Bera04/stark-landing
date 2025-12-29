@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -19,13 +20,14 @@ import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
 
 const avatars = PlaceHolderImages.filter(p => p.id.startsWith('avatar-'));
 
 const questions = [
-    { id: 'q1', label: 'What is your avatar\'s primary function or purpose?', placeholder: 'e.g., A helpful assistant, a creative partner, a guardian...' },
-    { id: 'q2', label: 'Describe your avatar\'s personality in three words.', placeholder: 'e.g., Curious, witty, and loyal' },
-    { id: 'q3', label: 'What is a core value or principle your avatar follows?', placeholder: 'e.g., Always seek the truth, protect its user at all costs...' },
+    { id: 'q1', label: 'What is the avatar\'s primary function or purpose?', placeholder: 'e.g., A helpful assistant, a creative partner, a guardian...' },
+    { id: 'q2', label: 'Describe the avatar\'s personality in three words.', placeholder: 'e.g., Curious, witty, and loyal' },
+    { id: 'q3', label: 'What is a core value or principle the avatar follows?', placeholder: 'e.g., Always seek the truth, protect its user at all costs...' },
 ];
 
 export function CreateAvatarPage() {
@@ -33,12 +35,13 @@ export function CreateAvatarPage() {
     const [avatarName, setAvatarName] = useState('');
     const [selectedAvatar, setSelectedAvatar] = useState('');
     const [answers, setAnswers] = useState({ q1: '', q2: '', q3: '' });
+    const [invitationLink, setInvitationLink] = useState('');
     const { toast } = useToast();
 
     const handleNext = () => setStep(prev => prev + 1);
     const handleBack = () => setStep(prev => prev - 1);
 
-    const handleGenerateCode = () => {
+    const handleGenerateLink = () => {
         if (!avatarName || !selectedAvatar || Object.values(answers).some(a => !a)) {
             toast({
                 title: "Incomplete Form",
@@ -49,22 +52,29 @@ export function CreateAvatarPage() {
         }
 
         toast({
-            title: "Generating Code...",
-            description: "Your avatar configuration is being created.",
+            title: "Generating Invitation Link...",
+            description: "The avatar configuration is being created for your friend.",
         });
 
-        // Placeholder for generation logic
         setTimeout(() => {
-            const generatedCode = `AVATAR_CONFIG::${btoa(JSON.stringify({ avatarName, selectedAvatar, answers }))}`;
-            setStep(4); // Move to the code display step
-            // In a real scenario, you might want to display this code to the user
-            console.log(generatedCode);
-             toast({
-                title: "Avatar Generated!",
-                description: "Your new avatar configuration is ready.",
+            const uniqueCode = btoa(JSON.stringify({ avatarName, selectedAvatar, answers, timestamp: Date.now() }));
+            const link = `/dashboard?view=invite&code=${uniqueCode}`;
+            setInvitationLink(link);
+            setStep(4);
+            toast({
+                title: "Invitation Ready!",
+                description: "The avatar is ready to be trained by your participant.",
             });
         }, 1500);
     };
+    
+    const handleRestart = () => {
+        setStep(1);
+        setAvatarName('');
+        setSelectedAvatar('');
+        setAnswers({ q1: '', q2: '', q3: '' });
+        setInvitationLink('');
+    }
 
     const renderStep = () => {
         switch (step) {
@@ -72,8 +82,8 @@ export function CreateAvatarPage() {
                 return (
                     <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
                         <CardHeader>
-                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 1: Name Your Avatar</CardTitle>
-                            <CardDescription>Every great creation needs a name. What will you call yours?</CardDescription>
+                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 1: Name the Avatar</CardTitle>
+                            <CardDescription>Give a name to the avatar you are creating for your participant.</CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Label htmlFor="avatarName">Avatar Name</Label>
@@ -88,8 +98,8 @@ export function CreateAvatarPage() {
                 return (
                     <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
                         <CardHeader>
-                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 2: Choose an Appearance</CardTitle>
-                            <CardDescription>Select a base visual form for your avatar.</CardDescription>
+                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 2: Choose Its Appearance</CardTitle>
+                            <CardDescription>Select a base visual form for the avatar.</CardDescription>
                         </CardHeader>
                         <CardContent className="max-h-[50vh] overflow-y-auto">
                             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
@@ -117,7 +127,7 @@ export function CreateAvatarPage() {
                 return (
                     <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
                         <CardHeader>
-                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 3: Define its Personality</CardTitle>
+                            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 3: Define Its Personality</CardTitle>
                             <CardDescription>Answer these questions to shape its core characteristics.</CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
@@ -130,19 +140,25 @@ export function CreateAvatarPage() {
                         </CardContent>
                         <CardFooter className="justify-between">
                             <Button variant="ghost" onClick={handleBack}>Back</Button>
-                            <GlowingButton text="Generate Avatar" onClick={handleGenerateCode} />
+                            <GlowingButton text="Generate Invite Link" onClick={handleGenerateLink} />
                         </CardFooter>
                     </motion.div>
                 );
             case 4:
                 return (
                      <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center p-8">
-                        <CardTitle className="text-2xl font-headline mb-4" style={{color: 'var(--dynamic-text-color)'}}>Congratulations!</CardTitle>
-                        <CardDescription className="mb-6">Your avatar, {avatarName}, has been created.</CardDescription>
+                        <CardTitle className="text-2xl font-headline mb-4" style={{color: 'var(--dynamic-text-color)'}}>Invitation Ready!</CardTitle>
+                        <CardDescription className="mb-6">The avatar, {avatarName}, has been created for your participant.</CardDescription>
                         <div className="relative aspect-square max-w-xs mx-auto rounded-lg overflow-hidden border-2 border-primary shadow-2xl shadow-primary/20 mb-8">
                            {selectedAvatar && <Image src={selectedAvatar} alt="Final Avatar" fill className="object-cover" />}
                         </div>
-                        <GlowingButton text="Start Over" onClick={() => setStep(1)} />
+                        <div className='flex flex-col items-center gap-4'>
+                            <p className='text-sm text-muted-foreground'>Send the link below to your friend to start training.</p>
+                            <Link href={invitationLink} passHref>
+                                <GlowingButton text="Go to Invitation Page" />
+                            </Link>
+                             <Button variant="ghost" onClick={handleRestart}>Create Another</Button>
+                        </div>
                     </motion.div>
                 );
         }
@@ -158,3 +174,5 @@ export function CreateAvatarPage() {
         </Card>
     );
 }
+
+    
