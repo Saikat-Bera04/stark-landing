@@ -92,7 +92,7 @@ export function ProfilePage() {
               <AvatarFallback>U</AvatarFallback>
             </Avatar>
             <div>
-              <CardTitle className="text-2xl font-headline">Max Robinson</CardTitle>
+              <CardTitle className="text-2xl font-headline" style={{color: 'var(--dynamic-text-color)'}}>Max Robinson</CardTitle>
               <CardDescription>max@example.com</CardDescription>
               <p className="text-sm text-muted-foreground">@maxrobinson</p>
             </div>
@@ -103,7 +103,7 @@ export function ProfilePage() {
       {isEditing ? (
         <Card className="card-glass animate-fade-in">
             <CardHeader>
-            <CardTitle>Complete Your Profile</CardTitle>
+            <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Complete Your Profile</CardTitle>
             <CardDescription>
                 Help your avatar know you better by providing more details.
             </CardDescription>
@@ -171,7 +171,7 @@ export function ProfilePage() {
         <Card className="card-glass">
             <CardHeader className="flex flex-row items-center justify-between">
                 <div>
-                    <CardTitle>Your Profile</CardTitle>
+                    <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Your Profile</CardTitle>
                     <CardDescription>This is the information your avatar knows about you.</CardDescription>
                 </div>
                 <Button variant="outline" size="icon" onClick={() => { setIsEditing(true); setFormData(profileData); }}>
@@ -194,7 +194,7 @@ export function ProfilePage() {
                             <InfoItem label="Favorite Color" value={profileData.favColor} />
                         </div>
                         <div>
-                        <h4 className="text-sm font-semibold text-foreground mb-2">Social Media</h4>
+                        <h4 className="text-sm font-semibold text-foreground mb-2" style={{color: 'var(--dynamic-text-color)'}}>Social Media</h4>
                         <div className="flex flex-wrap gap-4">
                             {profileData.instagram && <SocialLink platform="Instagram" handle={profileData.instagram} />}
                             {profileData.facebook && <SocialLink platform="Facebook" handle={profileData.facebook} />}

@@ -30,7 +30,7 @@ export function ChatInterface() {
   return (
     <Card className="flex flex-col h-[calc(100vh-10rem)] card-glass">
         <CardHeader>
-            <CardTitle className="font-headline">Chat with your EvoAvatar</CardTitle>
+            <CardTitle className="font-headline" style={{color: 'var(--dynamic-text-color)'}}>Chat with your EvoAvatar</CardTitle>
             <CardDescription>Have a conversation and see how its personality unfolds.</CardDescription>
         </CardHeader>
       <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">

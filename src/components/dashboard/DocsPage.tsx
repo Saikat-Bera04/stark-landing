@@ -35,7 +35,7 @@ export function DocsPage() {
     <div className="space-y-4">
       <Card className="card-glass">
         <CardHeader>
-          <CardTitle className="font-headline">Documentation</CardTitle>
+          <CardTitle className="font-headline" style={{color: 'var(--dynamic-text-color)'}}>Documentation</CardTitle>
           <CardDescription>
             Your guide to understanding and using EvoAvatar.
           </CardDescription>

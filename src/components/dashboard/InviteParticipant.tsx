@@ -33,7 +33,7 @@ export function InviteParticipant() {
   return (
     <Card className="card-glass">
       <CardHeader>
-        <CardTitle className="font-headline">Invite Your Trusted Partner</CardTitle>
+        <CardTitle className="font-headline" style={{color: 'var(--dynamic-text-color)'}}>Invite Your Trusted Partner</CardTitle>
         <CardDescription>
           Your EvoAvatar can only be trained by one other person. Choose someone you trust to help shape its personality.
         </CardDescription>

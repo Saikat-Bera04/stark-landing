@@ -65,7 +65,7 @@ export function AvatarTraining() {
   return (
     <Card className="card-glass">
       <CardHeader>
-        <CardTitle className="font-headline">Train Your Avatar</CardTitle>
+        <CardTitle className="font-headline" style={{color: 'var(--dynamic-text-color)'}}>Train Your Avatar</CardTitle>
         <CardDescription>
           Add new memories, opinions, or facts for your avatar to learn. Use text or your voice.
         </CardDescription>

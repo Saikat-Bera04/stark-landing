@@ -38,28 +38,28 @@ export function AboutSection() {
           <Card className="card-glass flex flex-col">
             <CardHeader>
                 <div className="inline-block rounded-lg bg-primary/10 text-primary px-3 py-1 text-sm mb-2 w-fit">Our Solution</div>
-                <CardTitle className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline">One-to-One Connection</CardTitle>
+                <CardTitle className="text-2xl font-bold tracking-tighter sm:text-4xl font-headline" style={{color: 'var(--dynamic-text-color)'}}>One-to-One Connection</CardTitle>
             </CardHeader>
             <CardContent>
                 <ul className="grid gap-4 text-muted-foreground text-base">
                     <li className="flex items-start gap-3">
                         <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                         <div>
-                            <h4 className="font-semibold text-foreground">Hyper-Personalization</h4>
+                            <h4 className="font-semibold text-foreground" style={{color: 'var(--dynamic-text-color)'}}>Hyper-Personalization</h4>
                             <span>Strict one-to-one training ensures only you and one approved person shape your avatar.</span>
                         </div>
                     </li>
                      <li className="flex items-start gap-3">
                         <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                         <div>
-                            <h4 className="font-semibold text-foreground">Adaptive Memory</h4>
+                            <h4 className="font-semibold text-foreground" style={{color: 'var(--dynamic-text-color)'}}>Adaptive Memory</h4>
                             <span>Continuously evolves through memory-based learning, not model retraining.</span>
                         </div>
                     </li>
                      <li className="flex items-start gap-3">
                         <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                         <div>
-                           <h4 className="font-semibold text-foreground">Immutable Trust</h4>
+                           <h4 className="font-semibold text-foreground" style={{color: 'var(--dynamic-text-color)'}}>Immutable Trust</h4>
                             <span>Your data remains private, building a digital personality that is truly yours.</span>
                         </div>
                     </li>
