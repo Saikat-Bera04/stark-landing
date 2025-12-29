@@ -75,7 +75,7 @@
     {
       "id": "security-bot",
       "description": "Abstract image for security bot",
-      "imageUrl": "https://firebasestudio.corp.google.com/static/images/bot_greenprint.gif",
+      "imageUrl": "/bot_greenprint.gif",
       "imageHint": "wireframe robot"
     },
     {
