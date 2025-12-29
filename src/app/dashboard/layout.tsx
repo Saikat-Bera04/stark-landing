@@ -2,6 +2,7 @@
 import { SidebarDemo } from '@/components/ui/aceternity-sidebar';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import React from 'react';
+import Image from 'next/image';
 
 export default function DashboardLayout({
   children,
@@ -9,14 +10,25 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen w-full bg-background">
-      <SidebarDemo />
-      <div className="flex flex-1 flex-col overflow-hidden">
-        <DashboardHeader />
-        <main className="flex-1 p-4 md:p-6 z-10 relative overflow-y-auto">
-          <div className="absolute inset-0 h-full w-full bg-black"></div>
-          <div className="relative z-10">{children}</div>
-        </main>
+    <div className="h-screen w-full">
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/dashboard.gif"
+          alt="Dashboard background"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+      <div className="relative z-10 flex h-full w-full">
+        <SidebarDemo />
+        <div className="flex flex-1 flex-col overflow-hidden bg-transparent">
+          <DashboardHeader />
+          <main className="flex-1 overflow-y-auto p-4 md:p-6">
+            {children}
+          </main>
+        </div>
       </div>
     </div>
   );
