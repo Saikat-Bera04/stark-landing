@@ -52,11 +52,11 @@ export function InvitationCard({ avatarName, avatarImageUrl, fromUserName }: Inv
                 </div>
             </CardContent>
             <CardFooter className="flex justify-center gap-4">
-                <Button variant="outline" size="icon" className="border-red-500/50 text-red-500 hover:bg-red-500/10 hover:text-red-500" onClick={handleReject}>
-                    <X className="h-4 w-4" />
+                <Button variant="destructive" onClick={handleReject}>
+                    <X className="mr-2 h-4 w-4" /> Reject
                 </Button>
-                 <Button variant="outline" size="icon" className="border-green-500/50 text-green-500 hover:bg-green-500/10 hover:text-green-500" onClick={handleAccept}>
-                    <Check className="h-4 w-4" />
+                <Button variant="default" onClick={handleAccept}>
+                    <Check className="mr-2 h-4 w-4" /> Accept
                 </Button>
             </CardFooter>
         </Card>
