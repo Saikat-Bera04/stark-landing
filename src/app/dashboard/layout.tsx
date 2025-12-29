@@ -16,7 +16,7 @@ export default function DashboardLayout({
           src="https://i.pinimg.com/originals/29/c7/c9/29c7c98a6be6f7401416d3653cb68907.gif"
           alt="Dashboard background"
           fill
-          className="object-cover"
+          className="object-cover animate-glow"
           unoptimized
         />
         <div className="absolute inset-0 bg-black/50" />
