@@ -38,7 +38,7 @@ export function ChatInterface() {
                 <AvatarFallback>A</AvatarFallback>
               </Avatar>
             )}
-            <div className={`rounded-lg p-3 max-w-xs md:max-w-md ${msg.from === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary/80'}`}>
+            <div className={`rounded-lg p-3 max-w-xs md:max-w-md ${msg.from === 'user' ? 'bg-accent text-accent-foreground' : 'bg-secondary/80'}`}>
               <p className="text-sm">{msg.text}</p>
             </div>
              {msg.from === 'user' && (
