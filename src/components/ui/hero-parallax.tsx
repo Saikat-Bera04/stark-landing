@@ -16,7 +16,7 @@ export const HeroParallax = ({
 }: {
   products: {
     title: string;
-    link: string;
+    link?: string;
     thumbnail: string;
   }[];
 }) => {
@@ -123,7 +123,7 @@ export const Header = () => {
 type ProductCardProps = {
   product: {
     title: string;
-    link: string;
+    link?: string;
     thumbnail: string;
   };
   translate: MotionValue<number>;
@@ -135,36 +135,40 @@ export const ProductCard = ({
   translate,
   className,
 }: ProductCardProps) => {
+  const content = (
+    <>
+      <Image
+        src={product.thumbnail}
+        height="500"
+        width="500"
+        className="absolute inset-0 h-full w-full object-cover object-left-top group-hover/product:shadow-2xl"
+        alt={product.title}
+      />
+      <div className="absolute inset-0 h-full w-full bg-black/40 opacity-0 group-hover/product:opacity-100 transition-opacity flex items-center justify-center">
+        <span className="text-white text-xl font-bold">{product.title}</span>
+      </div>
+    </>
+  );
+
   return (
     <motion.div
+      className={cn(
+        "group/product relative h-96 w-[30rem] flex-shrink-0",
+        className
+      )}
       style={{
         x: translate,
       }}
-      whileHover={{
-        y: -20,
-      }}
-      key={product.title}
-      className={cn(
-        "group/product h-96 w-[30rem] relative flex-shrink-0",
-        className
-      )}
     >
-      <Link
-        href={product.link}
-        className="block group-hover/product:shadow-2xl "
-      >
-        <Image
-          src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
-          alt={product.title}
-        />
-      </Link>
-      <div className="absolute inset-0 h-full w-full opacity-0 bg-black pointer-events-none group-hover/product:opacity-80"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-        {product.title}
-      </h2>
+      {product.link ? (
+        <Link href={product.link} className="block h-full w-full">
+          {content}
+        </Link>
+      ) : (
+        <div className="block h-full w-full">
+          {content}
+        </div>
+      )}
     </motion.div>
   );
 };
