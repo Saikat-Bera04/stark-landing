@@ -8,13 +8,13 @@ import { ColorSwitcher } from "../theme/ColorSwitcher";
 import { Button } from "../ui/button";
 import { ClientOnly } from "../shared/ClientOnly";
 
-const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
+const viewMap: { [key: string]: { title: string; icon: React.ReactElement } } = {
   dashboard: { title: "Dashboard", icon: <Home className="h-5 w-5" /> },
   training: { title: "Train Avatar", icon: <Bot className="h-5 w-5" /> },
   chat: { title: "Chat", icon: <MessageSquare className="h-5 w-5" /> },
   docs: { title: "Documentation", icon: <FileText className="h-5 w-5" /> },
   "create-avatar": { title: "Create Avatar", icon: <Sparkles className="h-5 w-5" /> },
-  "invite": { title: "Invite Participant", icon: <UserPlus className="h-5 w-5" /> },
+  "invite": { title: "Invite Participant", icon: <UserPlus className="h-5 w--5" /> },
   profile: { title: "User Profile", icon: <User className="h-5 w-5" /> },
 };
 
@@ -24,7 +24,7 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ onMobileMenuClick }: DashboardHeaderProps) {
   const searchParams = useSearchParams();
-  const [currentView, setCurrentView] = useState({
+  const [currentView, setCurrentView] = useState<{ title: string; icon: React.ReactElement }>({
     title: "Dashboard",
     icon: <Home className="h-5 w-5" />,
   });
