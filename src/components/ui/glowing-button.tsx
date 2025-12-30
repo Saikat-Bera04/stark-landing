@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface GlowingButtonProps {
   text: string;
@@ -8,12 +9,18 @@ interface GlowingButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
+  disabled?: boolean;
 }
 
-export function GlowingButton({ text, href, onClick, type, className }: GlowingButtonProps) {
+export function GlowingButton({ text, href, onClick, type, className, disabled }: GlowingButtonProps) {
   const commonProps = {
-    className: `bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block ${className}`,
+    className: cn(
+      "bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block",
+      disabled && "opacity-50 pointer-events-none",
+      className,
+    ),
     onClick: onClick,
+    disabled: disabled,
   };
 
   const content = (
@@ -43,7 +50,7 @@ export function GlowingButton({ text, href, onClick, type, className }: GlowingB
     </>
   );
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <Link href={href} {...commonProps}>
         {content}

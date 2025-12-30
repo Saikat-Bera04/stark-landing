@@ -140,7 +140,7 @@ export function CreateAvatarPage() {
                         </CardContent>
                         <CardFooter className="justify-between">
                             <Button variant="ghost" onClick={handleBack}>Back</Button>
-                            <GlowingButton text="Generate Invite Link" onClick={handleGenerateLink} />
+                            <GlowingButton text="Generate Invite Link" onClick={handleGenerateLink} disabled={!avatarName || !selectedAvatar || !answers.q1 || !answers.q2 || !answers.q3} />
                         </CardFooter>
                     </motion.div>
                 );
