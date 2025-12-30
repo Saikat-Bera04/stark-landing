@@ -41,11 +41,6 @@ const nextConfig = {
       },
     ],
   },
-  devIndicators: {
-    allowedDevOrigins: [
-      '*.cluster-wurh6gchdjcjmwrw2tqtufvhss.cloudworkstations.dev',
-    ],
-  },
 };
 
 module.exports = nextConfig;
