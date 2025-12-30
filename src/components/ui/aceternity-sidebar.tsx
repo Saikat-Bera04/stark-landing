@@ -13,6 +13,7 @@ import {
   UserPlus,
   Palette,
   Sparkles,
+  Menu,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -21,7 +22,8 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { Logo } from '../shared/Logo';
 import { Avatar, AvatarFallback, AvatarImage } from './avatar';
 import Image from 'next/image';
-import { ColorSwitcher } from '../theme/ColorSwitcher';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Button } from './button';
 
 interface SidebarLink {
   label: string;
@@ -62,16 +64,26 @@ const links: SidebarLink[] = [
   },
 ];
 
-export function SidebarDemo() {
+interface SidebarDemoProps {
+  isMobileNavOpen?: boolean;
+  setIsMobileNavOpen?: (open: boolean) => void;
+}
+
+export function SidebarDemo({ isMobileNavOpen, setIsMobileNavOpen }: SidebarDemoProps) {
+  const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
+
+  const effectiveOpen = isMobile ? isMobileNavOpen : open;
+  const setEffectiveOpen = isMobile ? setIsMobileNavOpen : setOpen;
+
   return (
-    <Sidebar open={open} setOpen={setOpen}>
+    <Sidebar open={effectiveOpen || false} setOpen={setEffectiveOpen || (() => {})} isMobile={isMobile}>
       <SidebarBody className="justify-between gap-10">
         <div className="flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-          {open ? <Logo /> : <LogoIcon />}
+          {effectiveOpen ? <Logo /> : <LogoIcon />}
           <div className="mt-8 flex flex-col gap-2">
             {links.map((link, idx) => (
-              <SidebarLink key={idx} link={link} open={open} />
+              <SidebarLink key={idx} link={link} open={effectiveOpen || false} />
             ))}
           </div>
         </div>
@@ -82,7 +94,7 @@ export function SidebarDemo() {
               href: '/dashboard?view=profile',
               icon: <User className="h-5 w-5 shrink-0" />,
             }}
-            open={open}
+            open={effectiveOpen || false}
           />
            <SidebarLink
             link={{
@@ -95,7 +107,7 @@ export function SidebarDemo() {
                 </Avatar>
               ),
             }}
-            open={open}
+            open={effectiveOpen || false}
           />
         </div>
       </SidebarBody>
@@ -113,13 +125,44 @@ export const LogoIcon = () => {
   );
 };
 
-//Aceternity UI Sidebar
 type SidebarProps = {
   children: React.ReactNode;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isMobile: boolean;
 };
-export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
+
+export const Sidebar = ({ children, open, setOpen, isMobile }: SidebarProps) => {
+  if (isMobile) {
+    return (
+       <AnimatePresence>
+        {open && (
+            <>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    onClick={() => setOpen(false)}
+                    className="fixed inset-0 bg-black/50 z-40"
+                />
+                <motion.div
+                    initial={{ x: '-100%' }}
+                    animate={{ x: 0 }}
+                    exit={{ x: '-100%' }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    className={cn(
+                        'fixed top-0 left-0 h-full z-50 flex flex-col justify-between bg-neutral-900 p-5 w-[240px]'
+                    )}
+                >
+                    {children}
+                </motion.div>
+            </>
+        )}
+       </AnimatePresence>
+    );
+  }
+
   return (
     <motion.div
       animate={{
@@ -133,7 +176,7 @@ export const Sidebar = ({ children, open, setOpen }: SidebarProps) => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       className={cn(
-        'relative z-50 flex h-full flex-col justify-between bg-neutral-900 p-5'
+        'relative z-20 flex h-full flex-col justify-between bg-neutral-900 p-5'
       )}
     >
       {children}
@@ -156,17 +199,14 @@ export const SidebarLink = ({ link, open }: { link: SidebarLink, open: boolean }
 
   useEffect(() => {
     const currentView = searchParams.get('view');
-    // Default dashboard view
-    if (link.href === '/dashboard' && !currentView) {
+    if (link.href === '/dashboard' && !currentView && pathname === '/dashboard') {
         setIsActive(true);
         return;
     }
-    // For other views
     if (link.href.includes('?view=')) {
         const linkView = new URLSearchParams(link.href.split('?')[1]).get('view');
         setIsActive(currentView === linkView);
     } else {
-        // For top-level links like /signin
         setIsActive(pathname === link.href && !link.href.includes('?'));
     }
 }, [pathname, searchParams, link.href]);
@@ -205,5 +245,3 @@ export const SidebarLink = ({ link, open }: { link: SidebarLink, open: boolean }
     </Link>
   );
 };
-
-    

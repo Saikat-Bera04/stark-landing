@@ -3,8 +3,9 @@
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Home, Bot, MessageSquare, ScrollText, UserPlus, User, FileText, Sparkles } from "lucide-react";
+import { Home, Bot, MessageSquare, ScrollText, UserPlus, User, FileText, Sparkles, Menu } from "lucide-react";
 import { ColorSwitcher } from "../theme/ColorSwitcher";
+import { Button } from "../ui/button";
 
 const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
   dashboard: { title: "Dashboard", icon: <Home className="h-5 w-5" /> },
@@ -16,7 +17,11 @@ const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
   profile: { title: "User Profile", icon: <User className="h-5 w-5" /> },
 };
 
-export function DashboardHeader() {
+interface DashboardHeaderProps {
+  onMobileMenuClick: () => void;
+}
+
+export function DashboardHeader({ onMobileMenuClick }: DashboardHeaderProps) {
   const searchParams = useSearchParams();
   const [currentView, setCurrentView] = useState({
     title: "Dashboard",
@@ -29,9 +34,17 @@ export function DashboardHeader() {
   }, [searchParams]);
 
   return (
-    <header className="flex h-12 items-center justify-between bg-neutral-900 px-4 md:px-6">
+    <header className="flex h-12 items-center justify-between bg-neutral-900/80 backdrop-blur-sm px-4 md:px-6">
       <div className="flex items-center gap-3">
-        <div className="text-primary">{currentView.icon}</div>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden text-foreground"
+          onClick={onMobileMenuClick}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+        <div className="text-primary hidden md:block">{currentView.icon}</div>
         <h1 className="text-md font-semibold text-foreground" style={{color: 'var(--dynamic-text-color)'}}>
           {currentView.title}
         </h1>
@@ -42,5 +55,3 @@ export function DashboardHeader() {
     </header>
   );
 }
-
-    

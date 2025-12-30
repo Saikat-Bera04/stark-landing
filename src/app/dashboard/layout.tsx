@@ -1,15 +1,20 @@
 'use client';
 import { SidebarDemo } from '@/components/ui/aceternity-sidebar';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { FloatingDots } from '@/components/dashboard/FloatingDots';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const isMobile = useIsMobile();
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
   return (
     <div className="h-screen w-full">
       <div className="fixed inset-0 z-0">
@@ -23,10 +28,13 @@ export default function DashboardLayout({
         <div className="absolute inset-0 bg-black/50" />
         <FloatingDots />
       </div>
-      <div className="relative z-10 flex h-full w-full">
-        <SidebarDemo />
-        <div className="flex flex-1 flex-col overflow-hidden bg-transparent">
-          <DashboardHeader />
+      <div className={cn("relative z-10 flex h-full w-full", isMobile && 'flex-col')}>
+        <SidebarDemo isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
+        <div className={cn(
+          "flex flex-1 flex-col overflow-hidden bg-transparent transition-all duration-300",
+          isMobileNavOpen && isMobile && "blur-sm"
+        )}>
+          <DashboardHeader onMobileMenuClick={() => setIsMobileNavOpen(true)} />
           <main className="flex-1 overflow-y-auto p-4 md:p-6">
             {children}
           </main>
