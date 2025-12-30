@@ -66,7 +66,7 @@ const links: SidebarLink[] = [
 
 interface SidebarDemoProps {
   isMobileNavOpen?: boolean;
-  setIsMobileNavOpen?: (open: boolean) => void;
+  setIsMobileNavOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function SidebarDemo({ isMobileNavOpen, setIsMobileNavOpen }: SidebarDemoProps) {
