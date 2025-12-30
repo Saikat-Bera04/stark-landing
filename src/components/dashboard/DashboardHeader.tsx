@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { Home, Bot, MessageSquare, ScrollText, UserPlus, User, FileText, Sparkles, Menu } from "lucide-react";
 import { ColorSwitcher } from "../theme/ColorSwitcher";
 import { Button } from "../ui/button";
+import { ClientOnly } from "../shared/ClientOnly";
 
 const viewMap: { [key: string]: { title: string; icon: React.ReactNode } } = {
   dashboard: { title: "Dashboard", icon: <Home className="h-5 w-5" /> },
@@ -50,7 +51,9 @@ export function DashboardHeader({ onMobileMenuClick }: DashboardHeaderProps) {
         </h1>
       </div>
       <div className="flex items-center">
-        <ColorSwitcher />
+        <ClientOnly>
+          <ColorSwitcher />
+        </ClientOnly>
       </div>
     </header>
   );
