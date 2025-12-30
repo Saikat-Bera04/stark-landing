@@ -111,7 +111,7 @@ export function CreateAvatarPage() {
                                             selectedAvatar === avatar.imageUrl ? 'border-primary ring-2 ring-primary/50' : 'border-border/50 hover:border-primary'
                                         )}
                                     >
-                                        <Image src={avatar.imageUrl} alt={avatar.imageHint} fill className="object-cover" data-ai-hint={avatar.imageHint} />
+                                        <Image src={avatar.imageUrl} alt={avatar.imageHint || 'Avatar image'} fill className="object-cover" data-ai-hint={avatar.imageHint} unoptimized />
                                          {selectedAvatar === avatar.imageUrl && <div className="absolute inset-0 bg-primary/50" />}
                                     </button>
                                 ))}
@@ -150,7 +150,7 @@ export function CreateAvatarPage() {
                         <CardTitle className="text-2xl font-headline mb-4" style={{color: 'var(--dynamic-text-color)'}}>Invitation Ready!</CardTitle>
                         <CardDescription className="mb-6">The avatar, {avatarName}, has been created for your participant.</CardDescription>
                         <div className="relative aspect-square max-w-xs mx-auto rounded-lg overflow-hidden border-2 border-primary shadow-2xl shadow-primary/20 mb-8">
-                           {selectedAvatar && <Image src={selectedAvatar} alt="Final Avatar" fill className="object-cover" />}
+                           {selectedAvatar && <Image src={selectedAvatar} alt="Final Avatar" fill className="object-cover" unoptimized />}
                         </div>
                         <div className='flex flex-col items-center gap-4'>
                             <p className='text-sm text-muted-foreground'>Send the link below to your friend to start training.</p>
