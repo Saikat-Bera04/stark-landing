@@ -23,7 +23,7 @@ const initialInvitations = [
   },
 ];
 
-const activeAvatars = [
+const initialActiveAvatars = [
     {
         avatarId: 'morpheus',
         avatarName: 'Morpheus',
@@ -34,6 +34,7 @@ const activeAvatars = [
 
 export function WelcomeDashboard() {
     const [invitations, setInvitations] = useState(initialInvitations);
+    const [activeAvatars, setActiveAvatars] = useState(initialActiveAvatars);
     const [showQuestionnaire, setShowQuestionnaire] = useState(false);
     const [selectedAvatar, setSelectedAvatar] = useState<{name: string, imageUrl: string} | null>(null);
 
@@ -48,9 +49,17 @@ export function WelcomeDashboard() {
     }
     
     const handleQuestionnaireSubmit = () => {
+        if (selectedAvatar) {
+            const newAvatar = {
+                avatarId: selectedAvatar.name.toLowerCase() + Date.now(),
+                avatarName: selectedAvatar.name,
+                avatarImageUrl: selectedAvatar.imageUrl,
+                status: 'Learning',
+            };
+            setActiveAvatars(prevAvatars => [...prevAvatars, newAvatar]);
+        }
         setShowQuestionnaire(false);
-        // Here you would typically add the new avatar to the active list
-        // For now, we just close the questionnaire
+        setSelectedAvatar(null);
     }
 
     if (showQuestionnaire && selectedAvatar) {
