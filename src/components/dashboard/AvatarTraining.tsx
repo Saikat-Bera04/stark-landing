@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { GlowingButton } from '@/components/ui/glowing-button';
 import { useToast } from '@/hooks/use-toast';
 import { createMemory } from '@/ai/flows/evolving-avatar-memories';
-import { Mic, MicOff, Loader2 } from 'lucide-react';
+import { Mic, MicOff, Loader2, Trash2 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 
@@ -33,6 +33,8 @@ export function AvatarTraining() {
       mediaRecorderRef.current.onstop = () => {
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
         setAudioBlob(audioBlob);
+        // Stop all tracks to release the microphone
+        stream.getTracks().forEach(track => track.stop());
       };
 
       mediaRecorderRef.current.start();
@@ -56,6 +58,15 @@ export function AvatarTraining() {
       toast({ title: 'Recording stopped.' });
     }
   };
+
+  const handleClear = () => {
+    setText('');
+    setAudioBlob(null);
+    toast({
+        title: 'Input Cleared',
+        description: 'The text and audio recording have been removed.',
+    })
+  }
 
   const handleSubmit = async () => {
     if (!text && !audioBlob) {
@@ -99,6 +110,8 @@ export function AvatarTraining() {
       setIsProcessing(false);
     }
   };
+
+  const hasInput = !!text || !!audioBlob;
 
   return (
     <Card className="card-glass w-full max-w-3xl mx-auto">
@@ -146,15 +159,19 @@ export function AvatarTraining() {
             </div>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-end">
-        <GlowingButton onClick={handleSubmit} disabled={isProcessing || isRecording}>
+      <CardFooter className="flex justify-end gap-2">
+        <Button variant="ghost" onClick={handleClear} disabled={!hasInput || isProcessing || isRecording}>
+            <Trash2 className="mr-2 h-4 w-4" />
+            Remove
+        </Button>
+        <GlowingButton onClick={handleSubmit} disabled={!hasInput || isProcessing || isRecording} text="Submit">
             {isProcessing ? (
                 <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     <span>Processing...</span>
                 </>
             ) : (
-                'Add Memory'
+                'Submit'
             )}
         </GlowingButton>
       </CardFooter>
