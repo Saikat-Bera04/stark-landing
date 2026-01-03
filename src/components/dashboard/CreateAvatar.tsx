@@ -21,6 +21,7 @@ import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import { UploadCloud } from 'lucide-react';
 
 const avatars = PlaceHolderImages.filter(p => p.id.startsWith('avatar-'));
 
@@ -34,12 +35,26 @@ export function CreateAvatarPage() {
     const [step, setStep] = useState(1);
     const [avatarName, setAvatarName] = useState('');
     const [selectedAvatar, setSelectedAvatar] = useState('');
+    const [uploadedAvatar, setUploadedAvatar] = useState<string | null>(null);
     const [answers, setAnswers] = useState({ q1: '', q2: '', q3: '' });
     const [invitationLink, setInvitationLink] = useState('');
     const { toast } = useToast();
 
     const handleNext = () => setStep(prev => prev + 1);
     const handleBack = () => setStep(prev => prev - 1);
+
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const dataUrl = reader.result as string;
+                setUploadedAvatar(dataUrl);
+                setSelectedAvatar(dataUrl);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const handleGenerateLink = () => {
         if (!avatarName || !selectedAvatar || Object.values(answers).some(a => !a)) {
@@ -72,6 +87,7 @@ export function CreateAvatarPage() {
         setStep(1);
         setAvatarName('');
         setSelectedAvatar('');
+        setUploadedAvatar(null);
         setAnswers({ q1: '', q2: '', q3: '' });
         setInvitationLink('');
     }
@@ -99,10 +115,26 @@ export function CreateAvatarPage() {
                     <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
                         <CardHeader>
                             <CardTitle style={{color: 'var(--dynamic-text-color)'}}>Step 2: Choose Its Appearance</CardTitle>
-                            <CardDescription>Select a base visual form for the avatar.</CardDescription>
+                            <CardDescription>Select a base visual form for the avatar, or upload your own.</CardDescription>
                         </CardHeader>
                         <CardContent className="max-h-[50vh] overflow-y-auto">
                             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                                <label htmlFor="avatar-upload" className="relative aspect-square w-full rounded-lg border-2 border-dashed border-border/50 flex flex-col items-center justify-center text-muted-foreground hover:bg-accent/10 hover:border-primary cursor-pointer transition-all">
+                                    <UploadCloud className="h-8 w-8" />
+                                    <span className="text-xs mt-2 text-center">Upload Your Own</span>
+                                    <input id="avatar-upload" type="file" className="sr-only" accept="image/*" onChange={handleImageUpload} />
+                                </label>
+                                {uploadedAvatar && (
+                                     <button
+                                        onClick={() => setSelectedAvatar(uploadedAvatar)}
+                                        className={cn("relative aspect-square w-full rounded-lg overflow-hidden border-2 transition-all",
+                                            selectedAvatar === uploadedAvatar ? 'border-primary ring-2 ring-primary/50' : 'border-border/50 hover:border-primary'
+                                        )}
+                                    >
+                                        <Image src={uploadedAvatar} alt="Uploaded Avatar" fill className="object-cover" />
+                                         {selectedAvatar === uploadedAvatar && <div className="absolute inset-0 bg-primary/50" />}
+                                    </button>
+                                )}
                                 {avatars.map(avatar => (
                                     <button
                                         key={avatar.id}
