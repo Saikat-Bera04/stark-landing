@@ -54,9 +54,9 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
         <nav className="flex items-center justify-between">
            <Link href="/" className="flex items-center gap-2 text-2xl font-bold group">
-                <Image src="/stark.png" alt="Stark Logo" width={32} height={32} className="h-8 w-8" />
+                <Image src="/stark.png" alt="Mimic Logo" width={32} height={32} className="h-8 w-8" />
                 <span className="text-foreground">
-                    Stark
+                    Mimic
                 </span>
             </Link>
           
@@ -215,5 +215,3 @@ export function Header() {
     </header>
   )
 }
-
-    

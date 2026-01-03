@@ -103,7 +103,7 @@ export function Footer() {
                 </motion.div>
                 <motion.div style={{ y: logoY, opacity: logoOpacity }} className="absolute inset-0 flex items-center justify-center z-0">
                     <h1 className="text-[30vw] md:text-[25vw] lg:text-[20vw] font-bold text-secondary select-none font-headline">
-                        STARK
+                        MIMIC
                     </h1>
                 </motion.div>
             </div>
