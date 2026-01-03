@@ -6,14 +6,17 @@ import { InvitationCard } from "./InvitationCard";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import { useState } from "react";
+import { PsychologicalQuestionnaire } from "./PsychologicalQuestionnaire";
 
-const invitations = [
+const initialInvitations = [
   {
+    id: 'invite1',
     avatarName: 'Helios',
     avatarImageUrl: PlaceHolderImages.find(p => p.id === 'avatar-13')?.imageUrl || '',
     fromUserName: 'Aria',
   },
   {
+    id: 'invite2',
     avatarName: 'Nyx',
     avatarImageUrl: PlaceHolderImages.find(p => p.id === 'avatar-14')?.imageUrl || '',
     fromUserName: 'Jaxon',
@@ -30,6 +33,29 @@ const activeAvatars = [
 ]
 
 export function WelcomeDashboard() {
+    const [invitations, setInvitations] = useState(initialInvitations);
+    const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+    const [selectedAvatar, setSelectedAvatar] = useState<{name: string, imageUrl: string} | null>(null);
+
+    const handleAcceptInvitation = (inviteId: string, avatarName: string, avatarImageUrl: string) => {
+        setSelectedAvatar({ name: avatarName, imageUrl: avatarImageUrl });
+        setShowQuestionnaire(true);
+        setInvitations(invitations.filter(inv => inv.id !== inviteId));
+    };
+
+    const handleRejectInvitation = (inviteId: string) => {
+        setInvitations(invitations.filter(inv => inv.id !== inviteId));
+    }
+    
+    const handleQuestionnaireSubmit = () => {
+        setShowQuestionnaire(false);
+        // Here you would typically add the new avatar to the active list
+        // For now, we just close the questionnaire
+    }
+
+    if (showQuestionnaire && selectedAvatar) {
+        return <PsychologicalQuestionnaire avatarName={selectedAvatar.name} onSubmit={handleQuestionnaireSubmit} />;
+    }
 
     return (
         <>
@@ -38,8 +64,13 @@ export function WelcomeDashboard() {
                     <h2 className="text-2xl font-headline mb-4" style={{color: 'var(--dynamic-text-color)'}}>Pending Invitations</h2>
                     {invitations.length > 0 ? (
                          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            {invitations.map((invite, index) => (
-                                <InvitationCard key={index} {...invite} />
+                            {invitations.map((invite) => (
+                                <InvitationCard 
+                                    key={invite.id}
+                                    {...invite}
+                                    onAccept={() => handleAcceptInvitation(invite.id, invite.avatarName, invite.avatarImageUrl)}
+                                    onReject={() => handleRejectInvitation(invite.id)}
+                                />
                             ))}
                         </div>
                     ) : (

@@ -18,23 +18,27 @@ interface InvitationCardProps {
     avatarName: string;
     avatarImageUrl: string;
     fromUserName: string;
+    onAccept: () => void;
+    onReject: () => void;
 }
 
-export function InvitationCard({ avatarName, avatarImageUrl, fromUserName }: InvitationCardProps) {
+export function InvitationCard({ avatarName, avatarImageUrl, fromUserName, onAccept, onReject }: InvitationCardProps) {
     const { toast } = useToast();
 
     const handleAccept = () => {
         toast({
             title: "Invitation Accepted!",
-            description: `You can now train ${avatarName}.`
-        })
+            description: `Please complete the questionnaire to begin training ${avatarName}.`
+        });
+        onAccept();
     }
 
     const handleReject = () => {
          toast({
             title: "Invitation Rejected",
             variant: "destructive",
-        })
+        });
+        onReject();
     }
 
     return (
