@@ -53,9 +53,9 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
         <nav className="flex items-center justify-between">
-           <Link href="/" className="flex items-center gap-2 text-2xl font-bold group">
-                <Image src="/mimic.png" alt="Mimic Logo" width={32} height={32} className="h-8 w-8" />
-                <span className="text-foreground">
+           <Link href="/" className="flex items-center gap-3 text-2xl font-bold group">
+                <Image src="/mimic.png" alt="Mimic Logo" width={40} height={40} className="h-10 w-10" />
+                <span className="text-foreground text-3xl">
                     Mimic
                 </span>
             </Link>
