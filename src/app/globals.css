@@ -92,7 +92,11 @@
   }
 
   .card-glass {
-    @apply bg-card/60 backdrop-blur-lg border-border/30;
+    @apply bg-card/60 backdrop-blur-lg border border-primary/20 shadow-lg shadow-primary/10 transition-all duration-300;
+  }
+
+  .card-glass:hover {
+    @apply border-primary/40 shadow-2xl shadow-primary/20;
   }
 
   @keyframes float {
