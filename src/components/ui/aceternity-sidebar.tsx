@@ -38,9 +38,9 @@ const links: SidebarLink[] = [
     icon: <Home className="h-5 w-5 shrink-0" />,
   },
   {
-    label: 'Chat',
-    href: '/dashboard?view=chat',
-    icon: <MessageSquare className="h-5 w-5 shrink-0" />,
+    label: 'Train Avatar',
+    href: '/dashboard?view=train-avatar',
+    icon: <BrainCircuit className="h-5 w-5 shrink-0" />,
   },
   {
     label: 'Create Avatar',
@@ -115,7 +115,7 @@ export const LogoIcon = () => {
       href="/"
       className="relative z-20 flex items-center justify-center py-1"
     >
-      <Image src="/stark.png" alt="Stark Logo" width={32} height={32} className="h-8 w-8" />
+      <Image src="/mimic.png" alt="Mimic Logo" width={32} height={32} className="h-8 w-8" />
     </Link>
   );
 };

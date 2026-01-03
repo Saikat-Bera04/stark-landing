@@ -6,7 +6,6 @@ import { InvitationCard } from "./InvitationCard";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import { useState } from "react";
-import { ChatDialog } from "./ChatDialog";
 
 const invitations = [
   {
@@ -31,7 +30,6 @@ const activeAvatars = [
 ]
 
 export function WelcomeDashboard() {
-    const [selectedAvatar, setSelectedAvatar] = useState<(typeof activeAvatars)[0] | null>(null);
 
     return (
         <>
@@ -58,7 +56,7 @@ export function WelcomeDashboard() {
                      {activeAvatars.length > 0 ? (
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {activeAvatars.map((avatar) => (
-                            <button onClick={() => setSelectedAvatar(avatar)} key={avatar.avatarId} className="group block text-left">
+                            <div key={avatar.avatarId} className="group block text-left">
                                 <Card className="card-glass overflow-hidden h-full transition-all duration-300 group-hover:border-primary/80 group-hover:shadow-xl group-hover:shadow-primary/10">
                                     <div className="relative aspect-[4/3]">
                                         <Image src={avatar.avatarImageUrl} alt={avatar.avatarName} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -69,7 +67,7 @@ export function WelcomeDashboard() {
                                         </div>
                                     </div>
                                 </Card>
-                            </button>
+                            </div>
                             ))}
                         </div>
                     ) : (
@@ -81,13 +79,6 @@ export function WelcomeDashboard() {
                     )}
                 </div>
             </div>
-            {selectedAvatar && (
-                <ChatDialog 
-                    avatar={selectedAvatar}
-                    isOpen={!!selectedAvatar}
-                    onClose={() => setSelectedAvatar(null)}
-                />
-            )}
         </>
     );
 }

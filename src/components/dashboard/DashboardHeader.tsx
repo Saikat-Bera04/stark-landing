@@ -3,14 +3,14 @@
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Home, Bot, MessageSquare, ScrollText, UserPlus, User, FileText, Sparkles, Menu } from "lucide-react";
+import { Home, Bot, ScrollText, UserPlus, User, FileText, Sparkles, Menu, BrainCircuit } from "lucide-react";
 import { ColorSwitcher } from "../theme/ColorSwitcher";
 import { Button } from "../ui/button";
 import { ClientOnly } from "../shared/ClientOnly";
 
 const viewMap: { [key: string]: { title: string; icon: React.ReactElement } } = {
   dashboard: { title: "Dashboard", icon: <Home className="h-5 w-5" /> },
-  chat: { title: "Chat", icon: <MessageSquare className="h-5 w-5" /> },
+  "train-avatar": { title: "Train Avatar", icon: <BrainCircuit className="h-5 w-5" /> },
   docs: { title: "Documentation", icon: <FileText className="h-5 w-5" /> },
   "create-avatar": { title: "Create Avatar", icon: <Sparkles className="h-5 w-5" /> },
   "invite": { title: "Invite Participant", icon: <UserPlus className="h-5 w--5" /> },

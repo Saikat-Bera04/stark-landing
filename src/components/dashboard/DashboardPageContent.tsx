@@ -3,12 +3,12 @@
 
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ChatInterface } from "@/components/dashboard/ChatInterface";
 import { DocsPage } from "@/components/dashboard/DocsPage";
 import { ProfilePage } from '@/components/dashboard/ProfilePage';
 import { WelcomeDashboard } from './WelcomeDashboard';
 import { CreateAvatarPage } from './CreateAvatar';
 import { InviteParticipantPage } from './InviteParticipant';
+import { AvatarTraining } from './AvatarTraining';
 
 export function DashboardPageContent() {
   const searchParams = useSearchParams();
@@ -16,8 +16,8 @@ export function DashboardPageContent() {
   
   const renderView = () => {
     switch (view) {
-      case "chat":
-        return <ChatInterface />;
+      case "train-avatar":
+        return <AvatarTraining />;
       case "docs":
         return <DocsPage />;
       case "create-avatar":
