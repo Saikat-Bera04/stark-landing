@@ -10,7 +10,6 @@ import { ClientOnly } from "../shared/ClientOnly";
 
 const viewMap: { [key: string]: { title: string; icon: React.ReactElement } } = {
   dashboard: { title: "Dashboard", icon: <Home className="h-5 w-5" /> },
-  training: { title: "Train Avatar", icon: <Bot className="h-5 w-5" /> },
   chat: { title: "Chat", icon: <MessageSquare className="h-5 w-5" /> },
   docs: { title: "Documentation", icon: <FileText className="h-5 w-5" /> },
   "create-avatar": { title: "Create Avatar", icon: <Sparkles className="h-5 w-5" /> },

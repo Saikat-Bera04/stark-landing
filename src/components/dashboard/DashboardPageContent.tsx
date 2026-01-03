@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
-import { AvatarTraining } from "@/components/dashboard/AvatarTraining";
 import { ChatInterface } from "@/components/dashboard/ChatInterface";
 import { DocsPage } from "@/components/dashboard/DocsPage";
 import { ProfilePage } from '@/components/dashboard/ProfilePage';
@@ -17,8 +16,6 @@ export function DashboardPageContent() {
   
   const renderView = () => {
     switch (view) {
-      case "training":
-        return <AvatarTraining />;
       case "chat":
         return <ChatInterface />;
       case "docs":

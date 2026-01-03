@@ -38,11 +38,6 @@ const links: SidebarLink[] = [
     icon: <Home className="h-5 w-5 shrink-0" />,
   },
   {
-    label: 'Train Avatar',
-    href: '/dashboard?view=training',
-    icon: <Bot className="h-5 w-5 shrink-0" />,
-  },
-  {
     label: 'Chat',
     href: '/dashboard?view=chat',
     icon: <MessageSquare className="h-5 w-5 shrink-0" />,
