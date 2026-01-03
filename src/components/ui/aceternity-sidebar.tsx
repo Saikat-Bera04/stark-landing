@@ -40,7 +40,7 @@ const links: SidebarLink[] = [
   {
     label: 'Train Avatar',
     href: '/dashboard?view=train-avatar',
-    icon: <BrainCircuit className="h-5 w-5 shrink-0" />,
+    icon: <Bot className="h-5 w-5 shrink-0" />,
   },
   {
     label: 'Create Avatar',
